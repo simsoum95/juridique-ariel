@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page en cours de configuration - LDJ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: { 50:'#EEF2FF',100:'#E0E7FF',200:'#C7D2FE',300:'#A5B4FC',400:'#818CF8',500:'#6366F1',600:'#5B4FE9',700:'#4338CA',800:'#3730A3',900:'#312E81' }}, fontFamily: { sans: ['Inter','system-ui','sans-serif'] }}}
+        }
+    </script>
+    <style>
+        .gradient-text { background: linear-gradient(135deg, #6366F1, #8B5CF6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    </style>
+</head>
+<body class="font-sans text-gray-900 bg-white antialiased min-h-screen flex flex-col">
+    <nav class="bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center"><span class="text-white font-bold text-lg">L</span></div>
+                <span class="text-2xl font-bold">LDJ</span>
+            </a>
+            <a href="index.html" class="text-primary-600 hover:text-primary-700 font-medium">Retour à l'accueil</a>
+        </div>
+    </nav>
+    <main class="flex-1 flex items-center justify-center px-4">
+        <div class="text-center max-w-lg">
+            <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-8">
+                <svg class="w-10 h-10 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-bold mb-4">Page en cours de <span class="gradient-text">configuration</span></h1>
+            <p class="text-gray-500 text-lg mb-8">Cette fonctionnalité sera bientôt disponible. Notre équipe travaille activement pour vous offrir la meilleure expérience possible.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html" class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-xl font-semibold transition-all">Retour à l'accueil</a>
+                <a href="contact.html" class="border-2 border-gray-200 hover:border-primary-300 text-gray-700 px-8 py-3 rounded-xl font-semibold transition-all">Nous contacter</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Licenciement abusif | Droit du travail | LDJ - La Défense Juridique</title>
+    <title>Détail litige | LDJ - La Défense Juridique</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,6 +50,14 @@
         }
         .faq-accordion summary::-webkit-details-marker { display: none; }
         .faq-accordion summary::marker { display: none; }
+        .faq-accordion[open] summary .faq-chevron { transform: rotate(180deg); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
     </style>
 </head>
 <body class="font-sans text-gray-900 bg-white antialiased">
@@ -68,10 +76,9 @@
                 </div>
 
                 <div class="hidden lg:flex items-center gap-8">
-                    <a href="litiges.html" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">Nos domaines</a>
+                    <a href="litiges.html" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">Litiges</a>
                     <a href="index.html#offres" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">Nos offres</a>
                     <a href="index.html#temoignages" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">Témoignages</a>
-                    <a href="index.html#processus" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">Comment ça marche</a>
                     <a href="contact.html" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">Contact</a>
                 </div>
 
@@ -90,13 +97,11 @@
             </div>
         </div>
 
-        <!-- Mobile menu -->
         <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-100 pb-4">
             <div class="px-4 pt-2 space-y-2">
-                <a href="litiges.html" class="block py-2 text-gray-600 hover:text-primary-600 font-medium">Nos domaines</a>
+                <a href="litiges.html" class="block py-2 text-gray-600 hover:text-primary-600 font-medium">Litiges</a>
                 <a href="index.html#offres" class="block py-2 text-gray-600 hover:text-primary-600 font-medium">Nos offres</a>
                 <a href="index.html#temoignages" class="block py-2 text-gray-600 hover:text-primary-600 font-medium">Témoignages</a>
-                <a href="index.html#processus" class="block py-2 text-gray-600 hover:text-primary-600 font-medium">Comment ça marche</a>
                 <a href="contact.html" class="block py-2 text-gray-600 hover:text-primary-600 font-medium">Contact</a>
                 <div class="pt-4 flex flex-col gap-3">
                     <a href="login.html" class="text-center text-gray-600 hover:text-primary-600 font-medium py-2">Se connecter</a>
@@ -109,15 +114,7 @@
     <!-- Breadcrumb -->
     <div class="pt-24 lg:pt-28 pb-4 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <nav class="flex items-center gap-2 text-sm text-gray-500">
-                <a href="index.html" class="hover:text-primary-600 transition-colors">Accueil</a>
-                <span>/</span>
-                <a href="litiges.html" class="hover:text-primary-600 transition-colors">Litiges</a>
-                <span>/</span>
-                <a href="litiges.html" class="hover:text-primary-600 transition-colors">Droit du travail</a>
-                <span>/</span>
-                <span class="text-gray-900 font-medium">Licenciement abusif</span>
-            </nav>
+            <nav id="breadcrumb" class="flex items-center gap-2 text-sm text-gray-500 flex-wrap"></nav>
         </div>
     </div>
 
@@ -125,13 +122,8 @@
     <section class="pb-16 lg:pb-24 bg-gradient-to-b from-primary-50/50 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-4xl">
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6">
-                    Vous avez travaillé.<br>
-                    <span class="gradient-text">Vous devez être payé.</span>
-                </h1>
-                <p class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
-                    Un licenciement sans cause réelle et sérieuse vous prive de vos droits. LDJ vous accompagne pour obtenir l'indemnisation qui vous revient et faire valoir vos droits devant les prud'hommes si nécessaire.
-                </p>
+                <h1 id="hero-title" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6"></h1>
+                <p id="hero-description" class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed"></p>
                 <a href="index.html#diagnostic" class="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:shadow-xl hover:shadow-primary-600/25">
                     <span>Lancer mon diagnostic gratuit</span>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -147,7 +139,6 @@
                 Combien cela va <span class="gradient-text">coûter ?</span>
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
-                <!-- Sans LDJ -->
                 <div class="card-hover bg-gray-50 rounded-2xl p-8 border border-gray-100">
                     <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                         <span class="w-10 h-10 bg-red-100 text-red-600 rounded-lg flex items-center justify-center">
@@ -155,27 +146,8 @@
                         </span>
                         Sans LDJ
                     </h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3 text-gray-600">
-                            <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                            <span>Avocat : <strong class="text-gray-900">2 000 € à 5 000 €</strong> d'honoraires</span>
-                        </li>
-                        <li class="flex items-start gap-3 text-gray-600">
-                            <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                            <span>Délai : <strong class="text-gray-900">6 à 18 mois</strong> avant jugement</span>
-                        </li>
-                        <li class="flex items-start gap-3 text-gray-600">
-                            <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                            <span><strong class="text-gray-900">Stress</strong> et charge mentale importante</span>
-                        </li>
-                        <li class="flex items-start gap-3 text-gray-600">
-                            <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                            <span><strong class="text-gray-900">Incertitude</strong> sur l'issue du dossier</span>
-                        </li>
-                    </ul>
+                    <ul id="sans-ldj-list" class="space-y-4"></ul>
                 </div>
-
-                <!-- Avec LDJ -->
                 <div class="card-hover bg-primary-50 rounded-2xl p-8 border-2 border-primary-200">
                     <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                         <span class="w-10 h-10 bg-primary-600 text-white rounded-lg flex items-center justify-center">
@@ -183,24 +155,7 @@
                         </span>
                         Avec LDJ
                     </h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3 text-gray-700">
-                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span>Diagnostic : <strong class="text-primary-600">0 €</strong></span>
-                        </li>
-                        <li class="flex items-start gap-3 text-gray-700">
-                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span>Abonnement : <strong class="text-primary-600">19,90 €/mois</strong></span>
-                        </li>
-                        <li class="flex items-start gap-3 text-gray-700">
-                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span><strong class="text-primary-600">Résolution rapide</strong> à l'amiable quand possible</span>
-                        </li>
-                        <li class="flex items-start gap-3 text-gray-700">
-                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span><strong class="text-primary-600">Accompagnement</strong> personnalisé à chaque étape</span>
-                        </li>
-                    </ul>
+                    <ul id="avec-ldj-list" class="space-y-4"></ul>
                 </div>
             </div>
         </div>
@@ -226,183 +181,65 @@
         </div>
     </section>
 
-    <!-- Similar Resolved Cases Section -->
+    <!-- Steps Section -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-4">
+                Comment LDJ <span class="gradient-text">vous accompagne</span>
+            </h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Un processus simple et transparent pour défendre vos droits efficacement.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card-hover text-center p-6">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-extrabold">1</span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Diagnostic gratuit</h3>
+                    <p class="text-gray-600 text-sm">Décrivez votre situation en quelques minutes. Notre outil analyse votre cas et évalue vos chances de succès.</p>
+                </div>
+                <div class="card-hover text-center p-6">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-extrabold">2</span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Analyse juridique</h3>
+                    <p class="text-gray-600 text-sm">Un juriste spécialisé examine votre dossier, identifie les textes applicables et établit une stratégie personnalisée.</p>
+                </div>
+                <div class="card-hover text-center p-6">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-extrabold">3</span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Résolution amiable</h3>
+                    <p class="text-gray-600 text-sm">Nous tentons une médiation ou une négociation directe pour résoudre le litige rapidement et sans frais judiciaires.</p>
+                </div>
+                <div class="card-hover text-center p-6">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-extrabold">4</span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Action en justice</h3>
+                    <p class="text-gray-600 text-sm">Si nécessaire, nous vous orientons vers un avocat partenaire spécialisé pour porter l'affaire devant les tribunaux.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resolved Cases Section -->
     <section class="py-16 lg:py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12">
                 Cas similaires <span class="gradient-text">résolus</span>
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-                <div class="card-hover bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                    <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-2">Licenciement sans motif</h3>
-                    <p class="text-gray-600 text-sm mb-4">Un employé de 8 ans d'ancienneté licencié sans lettre de motivation. L'employeur n'a jamais fourni de cause réelle et sérieuse.</p>
-                    <p class="text-primary-600 font-semibold text-sm">→ Indemnisation de 12 000 € obtenue à l'amiable</p>
-                </div>
-                <div class="card-hover bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                    <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-2">Licenciement pour inaptitude</h3>
-                    <p class="text-gray-600 text-sm mb-4">Salariée déclarée inapte par la médecine du travail, licenciée sans reclassement. Procédure de licenciement irrégulière.</p>
-                    <p class="text-primary-600 font-semibold text-sm">→ 18 500 € de dommages et intérêts aux prud'hommes</p>
-                </div>
-                <div class="card-hover bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                    <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-2">Licenciement économique contesté</h3>
-                    <p class="text-gray-600 text-sm mb-4">Cadre licencié pour motif économique. Absence de plan de sauvegarde de l'emploi et ordre de licenciement non respecté.</p>
-                    <p class="text-primary-600 font-semibold text-sm">→ 25 000 € + rappel de salaires en négociation</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partner Lawyers Section -->
-    <section class="py-16 lg:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-4">
-                Nos avocats partenaires spécialisés dans le <span class="gradient-text">droit du travail</span>
-            </h2>
-            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-                Des professionnels rigoureusement sélectionnés pour leur expertise en licenciement abusif et contentieux prud'homal.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="card-hover bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-2xl font-bold text-primary-600">M</span>
-                    </div>
-                    <h3 class="font-bold text-gray-900">Me Marie Dupont</h3>
-                    <p class="text-sm text-primary-600 font-medium mb-1">Droit du travail</p>
-                    <p class="text-sm text-gray-500 mb-3">15 ans d'expérience</p>
-                    <div class="flex items-center gap-1 mb-4">
-                        <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <span class="text-sm font-semibold text-gray-900">4,9</span>
-                        <span class="text-sm text-gray-500">(127 avis)</span>
-                    </div>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 font-semibold text-sm flex items-center gap-1">
-                        Voir le profil
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-                <div class="card-hover bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-2xl font-bold text-primary-600">L</span>
-                    </div>
-                    <h3 class="font-bold text-gray-900">Me Laurent Martin</h3>
-                    <p class="text-sm text-primary-600 font-medium mb-1">Contentieux prud'homal</p>
-                    <p class="text-sm text-gray-500 mb-3">12 ans d'expérience</p>
-                    <div class="flex items-center gap-1 mb-4">
-                        <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <span class="text-sm font-semibold text-gray-900">4,8</span>
-                        <span class="text-sm text-gray-500">(89 avis)</span>
-                    </div>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 font-semibold text-sm flex items-center gap-1">
-                        Voir le profil
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-                <div class="card-hover bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-2xl font-bold text-primary-600">S</span>
-                    </div>
-                    <h3 class="font-bold text-gray-900">Me Sophie Bernard</h3>
-                    <p class="text-sm text-primary-600 font-medium mb-1">Licenciement & discrimination</p>
-                    <p class="text-sm text-gray-500 mb-3">18 ans d'expérience</p>
-                    <div class="flex items-center gap-1 mb-4">
-                        <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <span class="text-sm font-semibold text-gray-900">5,0</span>
-                        <span class="text-sm text-gray-500">(156 avis)</span>
-                    </div>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 font-semibold text-sm flex items-center gap-1">
-                        Voir le profil
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-                <div class="card-hover bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-2xl font-bold text-primary-600">T</span>
-                    </div>
-                    <h3 class="font-bold text-gray-900">Me Thomas Leroy</h3>
-                    <p class="text-sm text-primary-600 font-medium mb-1">Droit social & licenciement</p>
-                    <p class="text-sm text-gray-500 mb-3">10 ans d'expérience</p>
-                    <div class="flex items-center gap-1 mb-4">
-                        <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <span class="text-sm font-semibold text-gray-900">4,7</span>
-                        <span class="text-sm text-gray-500">(72 avis)</span>
-                    </div>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 font-semibold text-sm flex items-center gap-1">
-                        Voir le profil
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-            </div>
+            <div id="cases-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"></div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-16 lg:py-24 bg-gray-50">
+    <section class="py-16 lg:py-24 bg-white">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl sm:text-4xl font-bold">
                     Questions <span class="gradient-text">fréquentes</span>
                 </h2>
             </div>
-
-            <div class="space-y-4">
-                <details class="faq-accordion bg-white rounded-2xl border border-gray-100 group">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:text-primary-600 transition-colors list-none">
-                        <span>Qu'est-ce qu'un licenciement abusif ?</span>
-                        <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </summary>
-                    <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                        Un licenciement est dit abusif lorsqu'il n'est pas fondé sur une cause réelle et sérieuse. Cela peut être un licenciement sans motif, pour un motif discriminatoire, ou lorsque la procédure n'a pas été respectée (absence d'entretien préalable, non-respect des délais, etc.). L'employeur doit prouver la réalité et la gravité du motif invoqué.
-                    </div>
-                </details>
-
-                <details class="faq-accordion bg-white rounded-2xl border border-gray-100 group">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:text-primary-600 transition-colors list-none">
-                        <span>Quels sont les délais pour contester un licenciement ?</span>
-                        <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </summary>
-                    <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                        Le salarié dispose d'un délai de 12 mois à compter de la notification du licenciement pour saisir le conseil de prud'hommes. Ce délai est impératif : au-delà, l'action est irrecevable. Il est donc essentiel d'agir rapidement pour préserver vos droits.
-                    </div>
-                </details>
-
-                <details class="faq-accordion bg-white rounded-2xl border border-gray-100 group">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:text-primary-600 transition-colors list-none">
-                        <span>Quelle indemnisation puis-je obtenir ?</span>
-                        <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </summary>
-                    <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                        En cas de licenciement sans cause réelle et sérieuse, le juge peut prononcer la nullité du licenciement (réintégration) ou octroyer une indemnité à la charge de l'employeur. Cette indemnité est plafonnée selon l'effectif de l'entreprise : jusqu'à 20 mois de salaire pour les entreprises de moins de 11 salariés, et sans plafond au-delà. Des dommages et intérêts peuvent s'ajouter pour les salariés protégés.
-                    </div>
-                </details>
-
-                <details class="faq-accordion bg-white rounded-2xl border border-gray-100 group">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:text-primary-600 transition-colors list-none">
-                        <span>Faut-il passer par les prud'hommes ou peut-on négocier ?</span>
-                        <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </summary>
-                    <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                        La négociation à l'amiable est souvent préférable : plus rapide, moins coûteuse et moins stressante. LDJ tente d'abord une résolution amiable avec votre employeur. Si un accord est trouvé, vous évitez les délais des prud'hommes (souvent 18 à 24 mois). Si la négociation échoue, nous vous orientons vers un avocat partenaire pour saisir le conseil de prud'hommes.
-                    </div>
-                </details>
-
-                <details class="faq-accordion bg-white rounded-2xl border border-gray-100 group">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:text-primary-600 transition-colors list-none">
-                        <span>Comment LDJ m'accompagne dans mon dossier de licenciement ?</span>
-                        <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </summary>
-                    <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                        Après votre diagnostic gratuit, un juriste qualifie votre dossier et évalue vos chances de succès. Avec l'abonnement ou l'offre à l'acte, nous rédigeons les courriers nécessaires, tentons une médiation avec l'employeur et vous accompagnons à chaque étape. Si un contentieux est nécessaire, nous vous mettons en relation avec un avocat partenaire spécialisé en droit du travail.
-                    </div>
-                </details>
-            </div>
+            <div id="faq-container" class="space-y-4"></div>
         </div>
     </section>
 
@@ -412,9 +249,7 @@
             <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
                 Prêt à défendre vos droits ?
             </h2>
-            <p class="text-xl text-primary-100 mb-10 max-w-2xl mx-auto">
-                Obtenez votre diagnostic juridique gratuit en quelques minutes. Découvrez si votre licenciement est contestable et quelles sont vos options.
-            </p>
+            <p id="cta-description" class="text-xl text-primary-100 mb-10 max-w-2xl mx-auto"></p>
             <a href="index.html#diagnostic" class="inline-flex items-center gap-2 bg-white text-primary-600 hover:bg-primary-50 px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:shadow-xl">
                 <span>Lancer mon diagnostic gratuit</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -425,9 +260,8 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-                <!-- Brand -->
-                <div class="md:col-span-1">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <div>
                     <div class="flex items-center gap-2 mb-4">
                         <a href="index.html" class="flex items-center gap-2">
                             <div class="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center">
@@ -439,51 +273,52 @@
                     <p class="text-gray-400 text-sm leading-relaxed mb-6">
                         La plateforme juridique qui vous accompagne dans tous vos litiges du quotidien.
                     </p>
-                    <div class="flex items-center gap-3">
-                        <div class="flex items-center gap-1 bg-white/10 px-3 py-1.5 rounded-full">
-                            <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#fff" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#fff" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#fff" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#fff" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-                            <span class="text-xs font-medium">4.7/5</span>
-                        </div>
-                        <div class="flex items-center gap-1 bg-white/10 px-3 py-1.5 rounded-full">
-                            <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#fff" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <span class="text-xs font-medium">4.7/5</span>
-                        </div>
+                    <div class="flex items-center gap-4">
+                        <a href="coming-soon.html" class="text-gray-500 hover:text-white transition-colors" aria-label="Twitter">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <a href="coming-soon.html" class="text-gray-500 hover:text-white transition-colors" aria-label="Facebook">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/></svg>
+                        </a>
+                        <a href="coming-soon.html" class="text-gray-500 hover:text-white transition-colors" aria-label="LinkedIn">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="coming-soon.html" class="text-gray-500 hover:text-white transition-colors" aria-label="Instagram">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Services -->
                 <div>
                     <h4 class="font-semibold text-white mb-4">Services</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
                         <li><a href="index.html#diagnostic" class="hover:text-white transition-colors">Diagnostic gratuit</a></li>
-                        <li><a href="index.html#offres" class="hover:text-white transition-colors">Abonnement juridique</a></li>
-                        <li><a href="index.html#offres" class="hover:text-white transition-colors">Offre à l'acte</a></li>
-                        <li><a href="index.html#processus" class="hover:text-white transition-colors">Avocat partenaire</a></li>
-                        <li><a href="index.html#processus" class="hover:text-white transition-colors">Résolution amiable</a></li>
+                        <li><a href="coming-soon.html" class="hover:text-white transition-colors">Abonnement</a></li>
+                        <li><a href="coming-soon.html" class="hover:text-white transition-colors">Offre à l'acte</a></li>
+                        <li><a href="coming-soon.html" class="hover:text-white transition-colors">Avocat partenaire</a></li>
+                        <li><a href="coming-soon.html" class="hover:text-white transition-colors">Résolution amiable</a></li>
                     </ul>
                 </div>
 
-                <!-- Domains -->
                 <div>
                     <h4 class="font-semibold text-white mb-4">Domaines</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="litiges-detail.html" class="hover:text-white transition-colors">Licenciement abusif</a></li>
-                        <li><a href="litiges.html" class="hover:text-white transition-colors">Loyers impayés</a></li>
-                        <li><a href="litiges.html" class="hover:text-white transition-colors">Divorce</a></li>
-                        <li><a href="litiges.html" class="hover:text-white transition-colors">Succession</a></li>
+                        <li><a href="litiges-detail.html?type=licenciement-abusif" class="hover:text-white transition-colors">Licenciement abusif</a></li>
+                        <li><a href="litiges-detail.html?type=loyers-impayes" class="hover:text-white transition-colors">Loyers impayés</a></li>
+                        <li><a href="litiges-detail.html?type=divorce" class="hover:text-white transition-colors">Divorce</a></li>
+                        <li><a href="litiges-detail.html?type=succession" class="hover:text-white transition-colors">Succession</a></li>
                         <li><a href="litiges.html" class="hover:text-white transition-colors">Voir tous les domaines</a></li>
                     </ul>
                 </div>
 
-                <!-- Legal / Contact -->
                 <div>
                     <h4 class="font-semibold text-white mb-4">Contact & Légal</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
                         <li><a href="contact.html" class="hover:text-white transition-colors">Nous contacter</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Mentions légales</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Politique de confidentialité</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">CGU</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="coming-soon.html" class="hover:text-white transition-colors">Mentions légales</a></li>
+                        <li><a href="coming-soon.html" class="hover:text-white transition-colors">Politique de confidentialité</a></li>
+                        <li><a href="coming-soon.html" class="hover:text-white transition-colors">CGU</a></li>
+                        <li><a href="coming-soon.html" class="hover:text-white transition-colors">FAQ</a></li>
                     </ul>
                 </div>
             </div>
@@ -491,13 +326,13 @@
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
                 <p class="text-sm text-gray-500">&copy; 2026 LDJ - La Défense Juridique. Tous droits réservés.</p>
                 <div class="flex items-center gap-6">
-                    <a href="#" class="text-gray-500 hover:text-white transition-colors">
+                    <a href="coming-soon.html" class="text-gray-500 hover:text-white transition-colors">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
                     </a>
-                    <a href="#" class="text-gray-500 hover:text-white transition-colors">
+                    <a href="coming-soon.html" class="text-gray-500 hover:text-white transition-colors">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/></svg>
                     </a>
-                    <a href="#" class="text-gray-500 hover:text-white transition-colors">
+                    <a href="coming-soon.html" class="text-gray-500 hover:text-white transition-colors">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
                 </div>
@@ -506,28 +341,773 @@
     </footer>
 
     <script>
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+    const LITIGES_DATA = {
+        'licenciement-abusif': {
+            title: 'Licenciement abusif',
+            heroTitle: 'Licencié sans raison valable ?<br><span class="gradient-text">Faites valoir vos droits.</span>',
+            category: 'Droit du travail',
+            categorySlug: 'droit-travail',
+            description: "Un licenciement est considéré comme abusif lorsqu'il ne repose pas sur une cause réelle et sérieuse, conformément aux articles L.1232-1 et suivants du Code du travail. L'employeur a l'obligation de justifier le motif du licenciement et de respecter une procédure stricte incluant un entretien préalable. LDJ vous accompagne pour contester cette décision et obtenir les indemnités auxquelles vous avez droit devant le conseil de prud'hommes.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">2 000 € à 5 000 €</strong> d\'honoraires',
+                'Délai : <strong class="text-gray-900">12 à 24 mois</strong> devant les prud\'hommes',
+                '<strong class="text-gray-900">Stress intense</strong> et charge mentale importante',
+                '<strong class="text-gray-900">Issue incertaine</strong> sans stratégie juridique claire'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, analyse complète offerte',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> tout compris',
+                '<strong class="text-primary-600">Résolution rapide</strong> par négociation amiable',
+                '<strong class="text-primary-600">Avocat partenaire</strong> spécialisé si contentieux nécessaire'
+            ],
+            cases: [
+                { title: 'Licenciement sans motif réel', description: "Un salarié avec 8 ans d'ancienneté licencié sans lettre de motivation valable. L'employeur n'a jamais fourni de cause réelle et sérieuse conformément à l'article L.1232-6 du Code du travail.", result: 'Indemnisation de 12 000 € obtenue à l\'amiable en 6 semaines' },
+                { title: 'Licenciement pour inaptitude irrégulier', description: "Salariée déclarée inapte par la médecine du travail, licenciée sans proposition de reclassement conforme à l'article L.1226-2 du Code du travail. Procédure de licenciement irrégulière.", result: '18 500 € de dommages et intérêts aux prud\'hommes' },
+                { title: 'Licenciement économique contesté', description: "Cadre licencié pour motif économique sans plan de sauvegarde de l'emploi (PSE) alors que l'entreprise comptait plus de 50 salariés. Non-respect de l'ordre des licenciements prévu à l'article L.1233-5.", result: '25 000 € + rappel de salaires obtenus en négociation' }
+            ],
+            faq: [
+                { question: "Qu'est-ce qu'un licenciement abusif ?", answer: "Un licenciement est abusif lorsqu'il ne repose pas sur une cause réelle et sérieuse au sens de l'article L.1235-1 du Code du travail. Cela couvre les licenciements sans motif, avec un motif discriminatoire, ou ceux dont la procédure est viciée (absence d'entretien préalable, non-respect des délais de convocation). L'employeur supporte la charge de la preuve du caractère réel et sérieux du motif invoqué." },
+                { question: 'Quel est le délai pour contester un licenciement ?', answer: "Depuis les ordonnances Macron de 2017, le salarié dispose d'un délai de 12 mois à compter de la notification du licenciement pour saisir le conseil de prud'hommes en contestation. Ce délai est de prescription : passé ce terme, l'action est irrecevable. Il est essentiel d'agir rapidement pour préserver vos droits et rassembler les preuves nécessaires." },
+                { question: 'Quelle indemnisation puis-je espérer ?', answer: "Le barème Macron (articles L.1235-3 et suivants) fixe des planchers et plafonds d'indemnités selon l'ancienneté et la taille de l'entreprise. Par exemple, pour 5 ans d'ancienneté dans une entreprise de plus de 11 salariés, l'indemnité se situe entre 3 et 6 mois de salaire. S'y ajoutent l'indemnité légale de licenciement, le préavis non effectué et d'éventuels rappels de salaires ou dommages et intérêts complémentaires." },
+                { question: 'Faut-il obligatoirement passer par les prud\'hommes ?', answer: "Non. La négociation amiable est souvent plus rapide et moins coûteuse. LDJ tente d'abord une résolution à l'amiable avec votre employeur via une mise en demeure puis une médiation. En cas d'accord, vous évitez les délais des prud'hommes (souvent 18 à 24 mois en première instance). Si la négociation échoue, nous vous orientons vers un avocat partenaire pour saisir le conseil de prud'hommes." },
+                { question: 'Comment LDJ m\'accompagne dans mon dossier ?', answer: "Après votre diagnostic gratuit, un juriste qualifie votre dossier et évalue vos chances de succès en se basant sur les textes applicables et la jurisprudence. Nous rédigeons ensuite les courriers nécessaires (mise en demeure, conclusions), tentons une résolution amiable, et si un contentieux est nécessaire, nous vous mettons en relation avec un avocat partenaire spécialisé en droit du travail." }
+            ]
+        },
+        'harcelement': {
+            title: 'Harcèlement au travail',
+            heroTitle: 'Victime de harcèlement ?<br><span class="gradient-text">Vous n\'êtes pas seul(e).</span>',
+            category: 'Droit du travail',
+            categorySlug: 'droit-travail',
+            description: "Le harcèlement moral ou sexuel au travail est un délit puni par les articles L.1152-1 et L.1153-1 du Code du travail et les articles 222-33 et 222-33-2 du Code pénal. Il se caractérise par des agissements répétés ayant pour effet une dégradation des conditions de travail, une atteinte à la dignité ou une altération de la santé physique ou mentale. LDJ vous aide à constituer votre dossier et à obtenir réparation.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">3 000 € à 8 000 €</strong> selon la complexité',
+                'Procédure : <strong class="text-gray-900">12 à 36 mois</strong> devant les tribunaux',
+                '<strong class="text-gray-900">Difficulté probatoire</strong> sans accompagnement',
+                '<strong class="text-gray-900">Risque de représailles</strong> de l\'employeur'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, évaluation confidentielle',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi complet',
+                '<strong class="text-primary-600">Constitution du dossier</strong> de preuves guidée',
+                '<strong class="text-primary-600">Protection juridique</strong> et orientation vers les autorités compétentes'
+            ],
+            cases: [
+                { title: 'Harcèlement moral par un supérieur', description: "Un cadre subissait des humiliations quotidiennes, une mise à l'écart et un retrait progressif de ses responsabilités depuis 18 mois. Certificat médical attestant d'un syndrome anxio-dépressif réactionnel.", result: '22 000 € d\'indemnités et résiliation judiciaire du contrat' },
+                { title: 'Harcèlement sexuel en entreprise', description: "Une salariée victime de gestes déplacés et de propos à connotation sexuelle de la part d'un collègue. L'employeur, alerté, n'a pris aucune mesure de protection conformément à son obligation de sécurité (art. L.4121-1).", result: '15 000 € de dommages et intérêts + mutation du harceleur' },
+                { title: 'Harcèlement managérial collectif', description: "Plusieurs salariés victimes de pressions excessives, d'objectifs irréalistes et de menaces répétées de leur manager. Un climat de peur installé dans le service avec trois arrêts maladie consécutifs.", result: 'Médiation obtenue, changement de management et 8 000 € par salarié' }
+            ],
+            faq: [
+                { question: 'Comment prouver le harcèlement au travail ?', answer: "En matière de harcèlement, le salarié doit présenter des éléments de fait laissant supposer l'existence d'un harcèlement (article L.1154-1 du Code du travail). Il peut s'agir de témoignages de collègues, d'échanges de mails ou SMS, de certificats médicaux, de comptes rendus d'entretiens. La charge de la preuve est ensuite inversée : c'est à l'employeur de prouver que les agissements ne constituent pas du harcèlement." },
+                { question: 'Quelle est la différence entre harcèlement moral et sexuel ?', answer: "Le harcèlement moral (art. L.1152-1) se caractérise par des agissements répétés entraînant une dégradation des conditions de travail. Le harcèlement sexuel (art. L.1153-1) comprend des propos ou comportements à connotation sexuelle répétés ou, même non répétés, constitue une forme de pression grave dans le but d'obtenir un acte de nature sexuelle. Les deux sont des délits pénaux punis de 2 ans d'emprisonnement et 30 000 € d'amende." },
+                { question: 'Que risque l\'employeur en cas de harcèlement ?', answer: "L'employeur a une obligation de prévention (art. L.4121-1 et L.1152-4). En cas de manquement, il engage sa responsabilité civile et peut être condamné à verser des dommages et intérêts à la victime. Pénalement, l'auteur du harcèlement risque 2 ans d'emprisonnement et 30 000 € d'amende. L'employeur qui n'a pas agi peut être poursuivi pour manquement à son obligation de sécurité de résultat." },
+                { question: 'Puis-je quitter mon poste si je suis harcelé(e) ?', answer: "Oui, vous pouvez demander une résiliation judiciaire de votre contrat de travail devant les prud'hommes (art. L.1231-1), ce qui équivaut à un licenciement sans cause réelle et sérieuse si le harcèlement est reconnu. Vous pouvez aussi prendre acte de la rupture du contrat, mais cette option est risquée car si le juge estime que les manquements ne sont pas suffisamment graves, la rupture produira les effets d'une démission." },
+                { question: 'Quels sont les premiers réflexes à avoir ?', answer: "Conservez toutes les preuves (mails, SMS, témoignages écrits de collègues), consultez votre médecin traitant pour un certificat médical, alertez les représentants du personnel ou le CSE, et signalez les faits par écrit à votre employeur en recommandé. Vous pouvez aussi saisir l'inspection du travail. LDJ vous guide dans chacune de ces étapes pour construire un dossier solide." }
+            ]
+        },
+        'discrimination': {
+            title: 'Discrimination au travail',
+            heroTitle: 'Victime de discrimination ?<br><span class="gradient-text">La loi vous protège.</span>',
+            category: 'Droit du travail',
+            categorySlug: 'droit-travail',
+            description: "La discrimination au travail est interdite par les articles L.1132-1 et suivants du Code du travail. Elle concerne toute distinction fondée sur l'origine, le sexe, l'âge, le handicap, l'orientation sexuelle, les opinions politiques, les activités syndicales ou tout autre critère prohibé. Qu'elle intervienne à l'embauche, pendant l'exécution du contrat ou lors d'un licenciement, LDJ vous aide à faire reconnaître vos droits.",
+            sansLDJ: [
+                'Avocat spécialisé : <strong class="text-gray-900">3 000 € à 7 000 €</strong>',
+                'Procédure : <strong class="text-gray-900">18 à 30 mois</strong> en moyenne',
+                '<strong class="text-gray-900">Preuve complexe</strong> à établir seul',
+                '<strong class="text-gray-900">Isolement</strong> face à l\'employeur'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, analyse de votre situation',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi dédié',
+                '<strong class="text-primary-600">Aide à la preuve</strong> et constitution du dossier',
+                '<strong class="text-primary-600">Saisine du Défenseur des droits</strong> si nécessaire'
+            ],
+            cases: [
+                { title: 'Discrimination à l\'embauche', description: "Un candidat qualifié a vu sa candidature rejetée à plusieurs reprises dans la même entreprise malgré un profil correspondant. Un testing organisé a mis en évidence une discrimination liée à l'origine.", result: '10 000 € de dommages et intérêts + obligation de recruter' },
+                { title: 'Discrimination salariale homme/femme', description: "Une salariée occupant le même poste que ses collègues masculins percevait une rémunération inférieure de 15% sans justification objective. Violation du principe d'égalité de rémunération prévu à l'article L.3221-2.", result: 'Rattrapage salarial de 18 000 € + alignement de salaire' },
+                { title: 'Discrimination liée au handicap', description: "Un salarié en situation de handicap n'a bénéficié d'aucun aménagement raisonnable de son poste malgré les préconisations de la médecine du travail, en violation de l'article L.5213-6 du Code du travail.", result: '14 000 € + aménagement du poste conforme aux préconisations' }
+            ],
+            faq: [
+                { question: 'Quels sont les critères de discrimination interdits ?', answer: "L'article L.1132-1 du Code du travail liste 25 critères de discrimination interdits dont l'origine, le sexe, les mœurs, l'orientation sexuelle, l'identité de genre, l'âge, la situation de famille, la grossesse, les caractéristiques génétiques, l'appartenance ethnique, les opinions politiques, les activités syndicales, les convictions religieuses, l'apparence physique, le nom de famille, le lieu de résidence, l'état de santé, le handicap et la domiciliation bancaire." },
+                { question: 'Comment prouver une discrimination ?', answer: "Le régime probatoire est aménagé en faveur du salarié (art. L.1134-1). Vous devez présenter des éléments de fait laissant supposer l'existence d'une discrimination (comparaison avec des collègues, statistiques, mails, témoignages). C'est ensuite à l'employeur de prouver que sa décision est justifiée par des éléments objectifs étrangers à toute discrimination." },
+                { question: 'Que risque l\'auteur d\'une discrimination ?', answer: "La discrimination est un délit pénal puni de 3 ans d'emprisonnement et 45 000 € d'amende (article 225-2 du Code pénal). Sur le plan civil, la victime peut obtenir des dommages et intérêts, la nullité de la mesure discriminatoire (licenciement, refus de promotion) et sa réintégration. L'employeur peut aussi être condamné à verser un rappel de salaires." },
+                { question: 'Puis-je saisir le Défenseur des droits ?', answer: "Oui, le Défenseur des droits est une autorité indépendante compétente en matière de discrimination. Il peut être saisi gratuitement, mener une enquête, proposer une médiation ou présenter des observations devant les tribunaux. Sa saisine n'est pas un préalable obligatoire à une action en justice mais peut constituer un élément de preuve important." },
+                { question: 'Quel est le délai pour agir en discrimination ?', answer: "Le délai de prescription est de 5 ans à compter de la révélation de la discrimination (article 2224 du Code civil combiné avec l'article L.1134-5 du Code du travail). Ce délai est plus long que le délai habituel en droit du travail, ce qui reflète la gravité de ces atteintes. LDJ vous aide à évaluer si votre action est encore recevable." }
+            ]
+        },
+        'heures-supplementaires': {
+            title: 'Heures supplémentaires impayées',
+            heroTitle: 'Heures supplémentaires non payées ?<br><span class="gradient-text">Récupérez votre dû.</span>',
+            category: 'Droit du travail',
+            categorySlug: 'droit-travail',
+            description: "Les heures supplémentaires effectuées au-delà de la durée légale de 35 heures hebdomadaires doivent être rémunérées avec une majoration de 25% pour les 8 premières heures et 50% au-delà (articles L.3121-28 et L.3121-36 du Code du travail). L'employeur qui ne paie pas les heures supplémentaires s'expose à un rappel de salaires pouvant porter sur les 3 dernières années. LDJ vous aide à récupérer votre dû.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">1 500 € à 4 000 €</strong> en honoraires',
+                'Délai : <strong class="text-gray-900">12 à 18 mois</strong> aux prud\'hommes',
+                '<strong class="text-gray-900">Difficulté</strong> à prouver les heures effectuées',
+                '<strong class="text-gray-900">Risque de représailles</strong> de l\'employeur'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, évaluation de vos créances',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec calcul précis',
+                '<strong class="text-primary-600">Mise en demeure</strong> professionnelle à l\'employeur',
+                '<strong class="text-primary-600">Négociation directe</strong> pour un paiement rapide'
+            ],
+            cases: [
+                { title: 'Heures sup non déclarées dans la restauration', description: "Un cuisinier effectuait régulièrement 50 heures par semaine alors que son contrat prévoyait 35 heures. Aucune heure supplémentaire n'était déclarée ni payée depuis 2 ans.", result: 'Rappel de 14 200 € de salaires + 3 000 € de dommages et intérêts' },
+                { title: 'Forfait jours irrégulier', description: "Un cadre sous convention de forfait jours ne bénéficiait d'aucun suivi de sa charge de travail ni d'entretien annuel, en violation des articles L.3121-60 et L.3121-65 du Code du travail.", result: 'Nullité du forfait et rappel de 22 000 € d\'heures supplémentaires' },
+                { title: 'Travail dissimulé', description: "Une employée de commerce effectuait des heures en dehors de ses horaires contractuels sur demande orale de son employeur, sans aucune trace sur ses bulletins de paie.", result: '9 800 € de rappel + indemnité forfaitaire de 6 mois de salaire pour travail dissimulé' }
+            ],
+            faq: [
+                { question: 'Comment prouver mes heures supplémentaires ?', answer: "En cas de litige, le salarié doit fournir au juge des éléments suffisamment précis pour permettre à l'employeur de répondre (article L.3171-4 du Code du travail). Il peut s'agir d'un décompte personnel, de mails envoyés en dehors des horaires, de témoignages de collègues, de badgeages ou de données GPS. La charge de la preuve ne repose pas uniquement sur le salarié." },
+                { question: 'Sur combien d\'années puis-je réclamer ?', answer: "L'action en paiement de salaires, y compris les heures supplémentaires, se prescrit par 3 ans à compter du jour où le salarié a connu ou aurait dû connaître les faits (article L.3245-1 du Code du travail). Vous pouvez donc réclamer jusqu'à 3 ans d'arriérés d'heures supplémentaires." },
+                { question: 'Quel est le taux de majoration applicable ?', answer: "La majoration légale est de 25% pour les 8 premières heures supplémentaires (de la 36e à la 43e heure) et de 50% au-delà (article L.3121-36). Toutefois, une convention ou un accord collectif peut prévoir un taux différent, avec un minimum de 10%. Vérifiez votre convention collective pour connaître le taux applicable." },
+                { question: 'Qu\'est-ce que le travail dissimulé ?', answer: "Le travail dissimulé (article L.8221-5) se caractérise par la mention intentionnelle sur le bulletin de paie d'un nombre d'heures inférieur à celui réellement effectué. En cas de rupture du contrat, le salarié a droit à une indemnité forfaitaire égale à 6 mois de salaire, en plus du rappel de salaires et des majorations dues." },
+                { question: 'Puis-je refuser de faire des heures supplémentaires ?', answer: "En principe, le salarié ne peut pas refuser d'effectuer des heures supplémentaires demandées par l'employeur dans le respect du contingent annuel (220 heures par défaut). Toutefois, il peut refuser si les heures dépassent les durées maximales légales (10h/jour, 48h/semaine, 44h en moyenne sur 12 semaines) ou si l'employeur ne respecte pas le repos quotidien de 11 heures." }
+            ]
+        },
+        'rupture-conventionnelle': {
+            title: 'Rupture conventionnelle',
+            heroTitle: 'Rupture conventionnelle ?<br><span class="gradient-text">Négociez le meilleur accord.</span>',
+            category: 'Droit du travail',
+            categorySlug: 'droit-travail',
+            description: "La rupture conventionnelle (articles L.1237-11 à L.1237-16 du Code du travail) est un mode de rupture amiable du contrat de travail. Elle ouvre droit à une indemnité spécifique au moins égale à l'indemnité légale de licenciement et permet de bénéficier de l'assurance chômage. LDJ vous aide à négocier les meilleures conditions et à vérifier que vos droits sont respectés.",
+            sansLDJ: [
+                'Avocat négociateur : <strong class="text-gray-900">1 500 € à 3 000 €</strong>',
+                'Risque de signer un accord <strong class="text-gray-900">désavantageux</strong>',
+                '<strong class="text-gray-900">Méconnaissance</strong> de l\'indemnité juste',
+                '<strong class="text-gray-900">Pression</strong> de l\'employeur lors des entretiens'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, calcul de votre indemnité optimale',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec coaching négociation',
+                '<strong class="text-primary-600">Simulation financière</strong> détaillée (indemnités, chômage, impôts)',
+                '<strong class="text-primary-600">Vérification</strong> de la convention avant signature'
+            ],
+            cases: [
+                { title: 'Négociation à la hausse réussie', description: "Un salarié avec 12 ans d'ancienneté s'est vu proposer une rupture conventionnelle avec l'indemnité légale minimale. Après coaching de LDJ, il a négocié une supra-légale significative.", result: 'Indemnité passée de 8 000 € à 19 500 € grâce à la négociation' },
+                { title: 'Rupture conventionnelle sous pression', description: "Une salariée était poussée à signer une rupture conventionnelle sous la menace d'un licenciement pour faute. Entretien de rupture sans possibilité d'assistance en violation de l'article L.1237-12.", result: 'Contestation validée, requalification en licenciement : 16 000 € d\'indemnités' },
+                { title: 'Optimisation fiscale et sociale', description: "Un cadre supérieur négociait sa rupture conventionnelle sans maîtriser les implications fiscales et sociales de l'indemnité. Simulation LDJ ayant permis d'optimiser le montant net perçu.", result: 'Économie de 4 200 € d\'impôts grâce à une structuration optimisée' }
+            ],
+            faq: [
+                { question: 'Quel est le montant minimum de l\'indemnité ?', answer: "L'indemnité de rupture conventionnelle ne peut être inférieure à l'indemnité légale de licenciement (article L.1237-13), soit 1/4 de mois de salaire par année d'ancienneté pour les 10 premières années, puis 1/3 au-delà. Si la convention collective prévoit une indemnité plus favorable, c'est ce minimum qui s'applique. En pratique, il est souvent possible de négocier une indemnité supra-légale." },
+                { question: 'Puis-je toucher le chômage après une rupture conventionnelle ?', answer: "Oui, la rupture conventionnelle homologuée ouvre droit à l'allocation d'aide au retour à l'emploi (ARE) dans les mêmes conditions qu'un licenciement. Vous devez vous inscrire à France Travail dans les 12 mois suivant la rupture. Attention : un délai de carence s'applique, calculé en fonction de l'indemnité supra-légale perçue (maximum 150 jours)." },
+                { question: 'Puis-je me rétracter après avoir signé ?', answer: "Oui, chaque partie dispose d'un délai de rétractation de 15 jours calendaires à compter du lendemain de la signature de la convention (article L.1237-13). La rétractation doit être notifiée par tout moyen attestant de sa date de réception (recommandé, remise en main propre). Ce droit est absolu et ne nécessite aucune justification." },
+                { question: 'L\'employeur peut-il m\'imposer une rupture conventionnelle ?', answer: "Non, la rupture conventionnelle repose sur le consentement libre et éclairé des deux parties. Si le salarié prouve que son consentement a été vicié par des pressions, menaces ou harcèlement, il peut demander la nullité de la convention devant les prud'hommes. La rupture est alors requalifiée en licenciement sans cause réelle et sérieuse." },
+                { question: 'Quels sont les délais de la procédure ?', answer: "La procédure comprend au minimum un entretien préalable, un délai de rétractation de 15 jours après signature, puis un délai d'homologation de 15 jours ouvrables par la DREETS (ex-DIRECCTE). Au total, comptez au minimum 5 à 6 semaines entre le premier entretien et la date effective de la rupture." }
+            ]
+        },
+        'conflit-employeur': {
+            title: 'Conflit avec l\'employeur',
+            heroTitle: 'En conflit avec votre employeur ?<br><span class="gradient-text">Trouvez une issue favorable.</span>',
+            category: 'Droit du travail',
+            categorySlug: 'droit-travail',
+            description: "Les conflits entre salariés et employeurs peuvent porter sur de nombreux sujets : modification du contrat de travail, sanctions disciplinaires injustifiées, non-respect des conditions de travail, retard de paiement ou encore mise au placard. Le droit du travail prévoit des protections spécifiques pour le salarié. LDJ vous accompagne pour analyser votre situation et trouver la meilleure solution.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">2 000 € à 6 000 €</strong> selon le litige',
+                'Procédure : <strong class="text-gray-900">6 à 24 mois</strong> en juridiction',
+                '<strong class="text-gray-900">Détérioration</strong> des conditions de travail',
+                '<strong class="text-gray-900">Risque</strong> de licenciement déguisé'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, analyse juridique de la situation',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi personnalisé',
+                '<strong class="text-primary-600">Médiation</strong> pour trouver un accord rapide',
+                '<strong class="text-primary-600">Protection</strong> contre les mesures de rétorsion'
+            ],
+            cases: [
+                { title: 'Modification unilatérale du contrat', description: "Un employeur a modifié les horaires de travail et le lieu d'affectation d'un salarié sans son accord, ce qui constitue une modification du contrat de travail nécessitant l'accord du salarié.", result: 'Annulation de la modification et 5 000 € de dommages et intérêts' },
+                { title: 'Sanction disciplinaire disproportionnée', description: "Un salarié a reçu une mise à pied disciplinaire de 5 jours pour un simple retard de 10 minutes, sans avertissement préalable. Sanction jugée disproportionnée par rapport à la faute.", result: 'Annulation de la sanction + rappel de salaire de la mise à pied' },
+                { title: 'Non-paiement de primes contractuelles', description: "Un commercial ne percevait plus ses primes sur objectifs depuis 6 mois, alors que les conditions étaient remplies conformément à son contrat et à l'usage d'entreprise établi.", result: 'Rappel de 7 800 € de primes + 2 000 € de dommages et intérêts' }
+            ],
+            faq: [
+                { question: 'Mon employeur peut-il modifier mon contrat sans mon accord ?', answer: "Non. Toute modification d'un élément essentiel du contrat (rémunération, qualification, durée du travail, lieu de travail si clause de mobilité absente) nécessite l'accord exprès du salarié. L'employeur peut en revanche modifier les conditions de travail (organisation, tâches accessoires) dans le cadre de son pouvoir de direction. En cas de refus d'une modification du contrat, l'employeur peut licencier mais le motif sera apprécié par le juge." },
+                { question: 'Quels sont mes recours en cas de sanction injustifiée ?', answer: "Vous pouvez contester toute sanction disciplinaire devant le conseil de prud'hommes dans un délai de 2 ans (art. L.1471-1). Le juge vérifie la régularité de la procédure, la réalité des faits invoqués et la proportionnalité de la sanction. Il peut annuler la sanction ou la réduire. L'avertissement, la mise à pied et la rétrogradation sont les sanctions les plus fréquemment contestées." },
+                { question: 'Mon employeur peut-il me faire une mise au placard ?', answer: "La mise au placard (retrait de responsabilités, isolement, absence de travail significatif) constitue une faute de l'employeur qui manque à son obligation de fournir du travail. Elle peut caractériser un harcèlement moral si les agissements sont répétés. Vous pouvez demander des dommages et intérêts voire une résiliation judiciaire de votre contrat." },
+                { question: 'Que faire si mon salaire n\'est pas payé à temps ?', answer: "Le non-paiement ou le retard de paiement du salaire constitue un manquement grave de l'employeur à ses obligations contractuelles. Vous pouvez envoyer une mise en demeure puis saisir les prud'hommes en référé (procédure d'urgence) pour obtenir le paiement avec des dommages et intérêts. Ce manquement peut aussi justifier une prise d'acte de la rupture aux torts de l'employeur." },
+                { question: 'Puis-je exercer un droit de retrait ?', answer: "L'article L.4131-1 du Code du travail reconnaît au salarié un droit d'alerte et de retrait en cas de danger grave et imminent pour sa vie ou sa santé, ou en cas de défectuosité des systèmes de protection. Le retrait doit être justifié : le salarié doit avoir un motif raisonnable de penser qu'il existe un danger. Si le retrait est jugé légitime, aucune sanction ni retenue de salaire ne peut être appliquée." }
+            ]
+        },
+        'divorce': {
+            title: 'Divorce',
+            heroTitle: 'Vous divorcez ?<br><span class="gradient-text">Protégez vos intérêts.</span>',
+            category: 'Droit de la famille',
+            categorySlug: 'droit-famille',
+            description: "Le divorce met fin au mariage et entraîne des conséquences patrimoniales et familiales importantes. Qu'il soit par consentement mutuel (articles 229-1 et suivants du Code civil), pour faute, pour altération définitive du lien conjugal ou pour acceptation du principe de la rupture, chaque procédure a ses spécificités. LDJ vous guide pour comprendre vos droits et protéger vos intérêts.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">2 500 € à 8 000 €</strong> par époux',
+                'Procédure : <strong class="text-gray-900">6 à 30 mois</strong> selon le type de divorce',
+                '<strong class="text-gray-900">Coût émotionnel</strong> et familial considérable',
+                '<strong class="text-gray-900">Partage inéquitable</strong> du patrimoine sans conseil'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, analyse de votre situation familiale',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec accompagnement complet',
+                '<strong class="text-primary-600">Médiation familiale</strong> pour un accord amiable',
+                '<strong class="text-primary-600">Avocat partenaire</strong> spécialisé en droit de la famille'
+            ],
+            cases: [
+                { title: 'Divorce par consentement mutuel rapide', description: "Un couple marié depuis 10 ans souhaitait divorcer à l'amiable. LDJ a facilité la médiation sur le partage du bien immobilier commun et la garde des deux enfants, permettant un divorce par consentement mutuel.", result: 'Convention signée en 8 semaines, économie de 4 000 € par rapport à un divorce contentieux' },
+                { title: 'Divorce avec prestation compensatoire', description: "Une épouse au foyer depuis 15 ans demandait une prestation compensatoire juste. L'époux sous-évaluait ses revenus. LDJ a aidé à constituer le dossier financier complet pour le juge.", result: 'Prestation compensatoire de 45 000 € + pension alimentaire de 800 €/mois' },
+                { title: 'Protection du patrimoine professionnel', description: "Un entrepreneur craignait que son entreprise soit intégrée dans la liquidation du régime matrimonial. Analyse du régime de communauté et des récompenses dues pour protéger l'outil professionnel.", result: 'Entreprise préservée avec compensation financière équitable de 35 000 €' }
+            ],
+            faq: [
+                { question: 'Quels sont les types de divorce en France ?', answer: "Le droit français prévoit quatre types de divorce : le divorce par consentement mutuel (extrajudiciaire depuis 2017, par acte d'avocat déposé chez un notaire), le divorce pour acceptation du principe de la rupture, le divorce pour altération définitive du lien conjugal (après 1 an de séparation) et le divorce pour faute. Le choix dépend de votre situation et de la possibilité d'un accord avec votre conjoint." },
+                { question: 'Combien coûte un divorce ?', answer: "Le coût varie considérablement. Un divorce par consentement mutuel coûte entre 1 500 € et 3 000 € (honoraires d'avocat + frais de notaire de 50 €). Un divorce contentieux peut coûter de 3 000 € à plus de 10 000 € par époux selon la complexité (patrimoine, enfants, expertise). L'aide juridictionnelle est accessible sous conditions de ressources." },
+                { question: 'Qu\'est-ce que la prestation compensatoire ?', answer: "La prestation compensatoire (articles 270 et suivants du Code civil) vise à compenser la disparité créée par la rupture du mariage dans les conditions de vie des époux. Elle est fixée en fonction de la durée du mariage, de l'âge et de la santé des époux, de leur qualification professionnelle, des conséquences des choix professionnels faits pendant le mariage, et du patrimoine de chacun. Elle est en principe versée en capital." },
+                { question: 'Comment se passe le partage des biens ?', answer: "La liquidation du régime matrimonial dépend du régime choisi lors du mariage. Sous le régime légal de la communauté réduite aux acquêts, les biens acquis pendant le mariage sont partagés par moitié. Les biens propres (hérités, possédés avant le mariage) restent à leur propriétaire. Un notaire intervient obligatoirement lorsqu'un bien immobilier est en jeu." },
+                { question: 'Que se passe-t-il pour les enfants ?', answer: "Le juge aux affaires familiales statue sur l'exercice de l'autorité parentale (en principe conjointe), la résidence habituelle des enfants, le droit de visite et d'hébergement, et la contribution à l'entretien et l'éducation (pension alimentaire). L'intérêt supérieur de l'enfant guide toutes les décisions. La médiation familiale est encouragée pour trouver un accord." }
+            ]
+        },
+        'garde-enfants': {
+            title: 'Garde d\'enfants',
+            heroTitle: 'Litige sur la garde ?<br><span class="gradient-text">L\'intérêt de l\'enfant d\'abord.</span>',
+            category: 'Droit de la famille',
+            categorySlug: 'droit-famille',
+            description: "La question de la garde des enfants est souvent le sujet le plus sensible lors d'une séparation. L'autorité parentale conjointe reste le principe (article 372 du Code civil) mais les modalités de résidence et de droit de visite doivent être fixées. Le juge aux affaires familiales statue en fonction de l'intérêt supérieur de l'enfant. LDJ vous accompagne pour obtenir un arrangement juste et protecteur.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">2 000 € à 5 000 €</strong> par procédure',
+                'Délai : <strong class="text-gray-900">6 à 18 mois</strong> devant le JAF',
+                '<strong class="text-gray-900">Conflit parental</strong> préjudiciable à l\'enfant',
+                '<strong class="text-gray-900">Expertise psychologique</strong> coûteuse et longue'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, analyse de votre situation parentale',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec médiation incluse',
+                '<strong class="text-primary-600">Médiation familiale</strong> pour un accord parental',
+                '<strong class="text-primary-600">Accompagnement</strong> devant le juge aux affaires familiales'
+            ],
+            cases: [
+                { title: 'Résidence alternée mise en place', description: "Un père souhaitait une résidence alternée pour ses deux enfants de 6 et 9 ans. La mère s'y opposait. La médiation a permis de trouver un accord satisfaisant les deux parents et respectant le rythme scolaire.", result: 'Résidence alternée mise en place avec accord amiable en 10 semaines' },
+                { title: 'Modification du droit de visite', description: "Un parent ayant déménagé à 200 km souhaitait modifier les modalités du droit de visite. L'autre parent refusait tout aménagement. Saisine du JAF pour adapter le droit de visite et d'hébergement.", result: 'DVH élargi pendant les vacances + partage équitable des frais de transport' },
+                { title: 'Non-représentation d\'enfant', description: "Un parent ne présentait plus les enfants lors des périodes de droit de visite, en violation de la décision du JAF. Constitution d'un dossier de non-représentation d'enfant (délit pénal art. 227-5 du Code pénal).", result: 'Ordonnance du JAF avec astreinte de 100 €/jour + rappel des obligations' }
+            ],
+            faq: [
+                { question: 'Qu\'est-ce que la résidence alternée ?', answer: "La résidence alternée (article 373-2-9 du Code civil) consiste à ce que l'enfant vive alternativement chez chacun de ses parents, selon un rythme défini (souvent une semaine sur deux). Le juge la prononce en tenant compte de l'intérêt de l'enfant, de la proximité des domiciles, de la capacité des parents à coopérer et de l'avis de l'enfant s'il a l'âge de discernement." },
+                { question: 'À partir de quel âge l\'enfant peut-il choisir ?', answer: "Il n'y a pas d'âge légal à partir duquel l'enfant choisit chez quel parent il vit. Toutefois, le juge doit entendre l'enfant capable de discernement qui en fait la demande (article 388-1 du Code civil). En pratique, les juges accordent un poids croissant à l'avis de l'enfant à partir de 12-13 ans environ, mais il ne s'agit que d'un élément parmi d'autres." },
+                { question: 'Comment modifier une décision de garde ?', answer: "Toute décision relative à la garde peut être modifiée si un élément nouveau le justifie (déménagement, changement de situation professionnelle, problème de santé, souhait de l'enfant). Il faut saisir le juge aux affaires familiales par requête. La médiation familiale peut être tentée en amont pour trouver un accord avant de saisir le juge." },
+                { question: 'Que faire en cas de non-respect du droit de visite ?', answer: "La non-représentation d'enfant est un délit pénal puni d'un an d'emprisonnement et 15 000 € d'amende (article 227-5 du Code pénal). Vous pouvez déposer une main courante ou une plainte, saisir le JAF en urgence pour obtenir une ordonnance avec astreinte, et demander des dommages et intérêts. Il est essentiel de documenter chaque incident (SMS, constats d'huissier)." },
+                { question: 'La pension alimentaire est-elle obligatoire ?', answer: "Oui, chaque parent doit contribuer à l'entretien et à l'éducation des enfants à proportion de ses ressources et des besoins de l'enfant (article 371-2 du Code civil). Le parent chez lequel l'enfant ne réside pas habituellement verse en général une pension alimentaire. En cas de résidence alternée, une pension peut tout de même être fixée s'il existe une disparité de revenus importante entre les parents." }
+            ]
+        },
+        'pension-alimentaire': {
+            title: 'Pension alimentaire',
+            heroTitle: 'Pension alimentaire impayée ?<br><span class="gradient-text">Faites respecter vos droits.</span>',
+            category: 'Droit de la famille',
+            categorySlug: 'droit-famille',
+            description: "L'obligation alimentaire est une obligation légale prévue par les articles 203 et suivants du Code civil. Le non-paiement de la pension alimentaire pendant plus de deux mois constitue le délit d'abandon de famille, puni de 2 ans d'emprisonnement et 15 000 € d'amende (article 227-3 du Code pénal). LDJ vous aide à recouvrer les pensions impayées et à faire réviser leur montant si nécessaire.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">1 500 € à 3 500 €</strong> pour le recouvrement',
+                'Huissier : <strong class="text-gray-900">500 € à 1 500 €</strong> de frais supplémentaires',
+                '<strong class="text-gray-900">Précarité financière</strong> pendant les mois impayés',
+                '<strong class="text-gray-900">Procédures longues</strong> et complexes'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, évaluation de vos créances',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi du recouvrement',
+                '<strong class="text-primary-600">Mise en demeure</strong> et saisine de l\'ARIPA',
+                '<strong class="text-primary-600">Action en recouvrement</strong> rapide et efficace'
+            ],
+            cases: [
+                { title: 'Recouvrement de 14 mois d\'impayés', description: "Une mère de deux enfants ne percevait plus la pension alimentaire de 600 €/mois depuis 14 mois. L'ex-conjoint avait changé de banque pour échapper aux saisies. Dossier transmis à l'ARIPA et au procureur.", result: 'Recouvrement de 8 400 € d\'arriérés + reprise du paiement mensuel' },
+                { title: 'Révision à la hausse de la pension', description: "Les besoins des enfants avaient augmenté (scolarité, activités) tandis que le parent débiteur avait bénéficié d'une promotion professionnelle significative. Demande de révision fondée sur l'article 371-2 du Code civil.", result: 'Pension passée de 350 € à 550 € par enfant et par mois' },
+                { title: 'Plainte pour abandon de famille', description: "Un parent refusait délibérément de payer la pension alimentaire malgré des revenus confortables. Dépôt de plainte pour abandon de famille (article 227-3 du Code pénal) après mise en demeure restée sans effet.", result: 'Condamnation pénale avec sursis + paiement intégral des arriérés de 6 200 €' }
+            ],
+            faq: [
+                { question: 'Que faire si la pension alimentaire n\'est pas payée ?', answer: "Plusieurs recours existent : la mise en demeure par courrier recommandé, la saisine de l'ARIPA (Agence de recouvrement et d'intermédiation des pensions alimentaires) qui peut procéder au paiement direct sur le salaire du débiteur, la procédure de paiement direct par huissier, et le dépôt de plainte pour abandon de famille si le non-paiement dure plus de 2 mois." },
+                { question: 'Comment faire réviser le montant de la pension ?', answer: "La pension alimentaire peut être révisée à la hausse ou à la baisse en cas de changement significatif dans les ressources ou les besoins (article 209 du Code civil). Il faut saisir le juge aux affaires familiales par requête. Les éléments justificatifs incluent les bulletins de salaire, avis d'imposition, justificatifs de charges et factures liées aux enfants." },
+                { question: 'Qu\'est-ce que l\'ARIPA ?', answer: "L'Agence de recouvrement et d'intermédiation des pensions alimentaires (ARIPA), gérée par la CAF/MSA, peut intervenir dès le premier impayé de pension alimentaire. Elle procède au recouvrement forcé (saisie sur salaire, saisie bancaire) et peut verser une allocation de soutien familial en attendant le recouvrement. Le service est gratuit pour le parent créancier." },
+                { question: 'Jusqu\'à quel âge la pension est-elle due ?', answer: "La pension alimentaire est due tant que l'enfant ne peut pas subvenir à ses propres besoins. Elle ne s'arrête pas automatiquement à 18 ans. Si l'enfant majeur poursuit ses études, est au chômage ou en situation de handicap, le parent débiteur reste tenu à son obligation. Le parent peut demander au juge de la supprimer lorsque l'enfant est autonome financièrement." },
+                { question: 'Le non-paiement est-il un délit ?', answer: "Oui, le non-paiement intégral de la pension alimentaire pendant plus de 2 mois constitue le délit d'abandon de famille prévu à l'article 227-3 du Code pénal, puni de 2 ans d'emprisonnement et 15 000 € d'amende. La plainte peut être déposée au commissariat ou auprès du procureur de la République. Le parent condamné reste tenu de payer les arriérés." }
+            ]
+        },
+        'succession': {
+            title: 'Succession',
+            heroTitle: 'Litige successoral ?<br><span class="gradient-text">Protégez votre héritage.</span>',
+            category: 'Droit de la famille',
+            categorySlug: 'droit-famille',
+            description: "Les successions sont régies par les articles 720 et suivants du Code civil. Elles peuvent donner lieu à de nombreux litiges : contestation de testament, atteinte à la réserve héréditaire, recel successoral, évaluation des biens, rapport des donations. Ces conflits sont souvent aggravés par la dimension familiale et émotionnelle. LDJ vous aide à comprendre vos droits et à les faire respecter.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">3 000 € à 10 000 €</strong> selon la complexité',
+                'Notaire : <strong class="text-gray-900">frais supplémentaires</strong> importants',
+                '<strong class="text-gray-900">Blocage</strong> de la succession pendant des années',
+                '<strong class="text-gray-900">Conflit familial</strong> aggravé sans médiation'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, analyse de vos droits successoraux',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec accompagnement notarial',
+                '<strong class="text-primary-600">Médiation familiale</strong> pour débloquer la situation',
+                '<strong class="text-primary-600">Avocat partenaire</strong> en droit des successions'
+            ],
+            cases: [
+                { title: 'Contestation de testament olographe', description: "Un testament olographe désavantageait un héritier réservataire au profit d'un tiers. Analyse de la validité du testament et action en réduction pour atteinte à la réserve héréditaire (article 912 du Code civil).", result: 'Réduction du legs et récupération de 85 000 € au titre de la réserve' },
+                { title: 'Recel successoral', description: "Un cohéritier avait dissimulé des comptes bancaires et des biens mobiliers du défunt pour les soustraire au partage. Action en recel successoral fondée sur l'article 778 du Code civil.", result: 'Restitution de 42 000 € + privation de la part du receleur sur les biens dissimulés' },
+                { title: 'Partage bloqué entre héritiers', description: "Quatre héritiers ne parvenaient pas à s'accorder sur le partage d'un bien immobilier et de placements financiers. L'un des héritiers refusait toute proposition depuis 3 ans, bloquant la succession.", result: 'Médiation réussie avec vente du bien et partage équitable en 4 mois' }
+            ],
+            faq: [
+                { question: 'Qu\'est-ce que la réserve héréditaire ?', answer: "La réserve héréditaire (articles 912 et suivants du Code civil) est la part minimale du patrimoine du défunt qui revient obligatoirement à ses héritiers réservataires (enfants, ou conjoint en l'absence d'enfants). Elle représente la moitié du patrimoine pour un enfant, les deux tiers pour deux enfants et les trois quarts pour trois enfants ou plus. Le reste constitue la quotité disponible dont le défunt peut disposer librement." },
+                { question: 'Peut-on contester un testament ?', answer: "Oui, un testament peut être contesté pour plusieurs motifs : vice de forme (testament olographe non entièrement écrit de la main du testateur, non daté ou non signé), insanité d'esprit du testateur (article 901 du Code civil), captation d'héritage par des manœuvres dolosives, ou atteinte à la réserve héréditaire. L'action doit être intentée dans un délai de 5 ans." },
+                { question: 'Que faire si un héritier bloque la succession ?', answer: "Si un héritier refuse de participer au partage, les autres héritiers peuvent saisir le tribunal judiciaire pour demander un partage judiciaire (article 840 du Code civil). Le juge peut désigner un notaire pour procéder aux opérations de partage et, en cas de désaccord persistant, ordonner la vente aux enchères des biens immobiliers (licitation). La médiation est souvent tentée en amont." },
+                { question: 'Quels sont les droits du conjoint survivant ?', answer: "Le conjoint survivant (non divorcé) bénéficie de droits importants : en présence d'enfants communs, il choisit entre l'usufruit de la totalité de la succession ou le quart en pleine propriété (article 757 du Code civil). Il dispose aussi d'un droit au logement temporaire (1 an) et d'un droit viager au logement sous conditions. Ces droits ne peuvent être réduits par testament." },
+                { question: 'Qu\'est-ce que le rapport des donations ?', answer: "Le rapport des donations (articles 843 et suivants du Code civil) est l'obligation pour un héritier qui a reçu une donation du vivant du défunt de la rapporter fictivement à la succession pour le calcul des parts. Cela garantit l'égalité entre les héritiers, sauf si la donation a été faite expressément hors part successorale (en avancement de part). Le notaire en charge de la succession effectue ce calcul." }
+            ]
+        },
+        'achat-en-ligne': {
+            title: 'Litige achat en ligne',
+            heroTitle: 'Problème avec un achat en ligne ?<br><span class="gradient-text">Faites-vous rembourser.</span>',
+            category: 'Droit de la consommation',
+            categorySlug: 'droit-consommation',
+            description: "Les achats en ligne sont protégés par le Code de la consommation, notamment le droit de rétractation de 14 jours (articles L.221-18 et suivants), la garantie légale de conformité (articles L.217-4 et suivants) et la garantie des vices cachés. En cas de non-livraison, produit non conforme ou vendeur défaillant, LDJ vous aide à obtenir réparation rapidement et efficacement.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">500 € à 2 000 €</strong> (souvent plus que le litige)',
+                'Procédure : <strong class="text-gray-900">6 à 12 mois</strong> devant le tribunal',
+                '<strong class="text-gray-900">Découragement</strong> face aux démarches',
+                '<strong class="text-gray-900">Méconnaissance</strong> des droits du consommateur'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, évaluation de vos droits',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi du litige',
+                '<strong class="text-primary-600">Mise en demeure</strong> au vendeur sous 48h',
+                '<strong class="text-primary-600">Médiation</strong> et saisine du médiateur de la consommation'
+            ],
+            cases: [
+                { title: 'Non-livraison après paiement', description: "Un consommateur avait payé 890 € pour un ordinateur portable sur un site marchand. Après 6 semaines, aucune livraison ni réponse du service client. Mise en demeure et signalement à la DGCCRF.", result: 'Remboursement intégral de 890 € obtenu en 3 semaines après mise en demeure' },
+                { title: 'Produit non conforme', description: "Un téléphone reconditionné vendu comme « état neuf » présentait des rayures profondes et une batterie défectueuse. Le vendeur refusait l'échange invoquant des conditions de garantie restrictives.", result: 'Remplacement du produit + bon d\'achat de 50 € au titre du préjudice' },
+                { title: 'Refus de rétractation abusif', description: "Un site de vente refusait d'appliquer le droit de rétractation de 14 jours sur un vêtement commandé en ligne, prétextant que l'article avait été essayé. Violation de l'article L.221-18 du Code de la consommation.", result: 'Remboursement de 245 € + frais de retour pris en charge par le vendeur' }
+            ],
+            faq: [
+                { question: 'Quel est le délai de rétractation pour un achat en ligne ?', answer: "Le consommateur dispose d'un délai de 14 jours à compter de la réception du bien pour exercer son droit de rétractation, sans avoir à justifier de motif ni à payer de pénalités (article L.221-18 du Code de la consommation). Certains produits sont exclus : biens personnalisés, produits périssables, logiciels descellés, presse, contenus numériques dont l'exécution a commencé." },
+                { question: 'Que faire en cas de non-livraison ?', answer: "Si le vendeur n'a pas livré dans le délai convenu ou, à défaut, dans les 30 jours suivant la commande, vous pouvez mettre en demeure le vendeur de livrer dans un délai raisonnable. Si la livraison n'intervient toujours pas, vous pouvez résoudre le contrat et obtenir le remboursement intégral dans les 14 jours (article L.216-2 du Code de la consommation)." },
+                { question: 'Comment exercer la garantie légale de conformité ?', answer: "La garantie légale de conformité s'applique pendant 2 ans à compter de la livraison pour les biens neufs (article L.217-3 du Code de la consommation). Pendant les 24 premiers mois, le défaut de conformité est présumé exister au moment de la livraison. Vous pouvez demander la réparation ou le remplacement du bien, et si ce n'est pas possible, la réduction du prix ou la résolution du contrat." },
+                { question: 'Puis-je saisir le médiateur de la consommation ?', answer: "Oui, tout professionnel doit informer le consommateur du médiateur compétent (article L.616-1). Avant de saisir le médiateur, vous devez avoir tenté de résoudre le litige directement avec le professionnel par une réclamation écrite. La médiation est gratuite pour le consommateur et le médiateur doit rendre sa proposition dans un délai de 90 jours." },
+                { question: 'Que faire si le vendeur est à l\'étranger ?', answer: "Si le vendeur est établi dans l'UE, vous pouvez utiliser la plateforme européenne de règlement en ligne des litiges (ODR). Pour les vendeurs hors UE, la procédure est plus complexe. Vous pouvez signaler le site à la DGCCRF, contester le paiement auprès de votre banque (chargeback) si vous avez payé par carte, ou saisir le Centre Européen des Consommateurs si le vendeur est dans l'UE/EEE." }
+            ]
+        },
+        'vices-caches': {
+            title: 'Vices cachés',
+            heroTitle: 'Victime d\'un vice caché ?<br><span class="gradient-text">Obtenez réparation.</span>',
+            category: 'Droit de la consommation',
+            categorySlug: 'droit-consommation',
+            description: "La garantie des vices cachés (articles 1641 à 1649 du Code civil) protège l'acheteur lorsque le bien acquis présente un défaut caché qui le rend impropre à l'usage auquel on le destine, ou qui diminue tellement cet usage que l'acheteur ne l'aurait pas acquis ou en aurait donné un moindre prix. Cette garantie s'applique aussi bien aux biens neufs qu'aux biens d'occasion. LDJ vous accompagne pour faire valoir vos droits.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">2 000 € à 5 000 €</strong> selon l\'enjeu',
+                'Expert : <strong class="text-gray-900">500 € à 2 000 €</strong> pour le rapport',
+                '<strong class="text-gray-900">Charge de la preuve</strong> lourde à supporter',
+                '<strong class="text-gray-900">Délais judiciaires</strong> de 12 à 24 mois'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, évaluation de votre dossier',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi d\'expertise',
+                '<strong class="text-primary-600">Mise en demeure</strong> et négociation avec le vendeur',
+                '<strong class="text-primary-600">Orientation</strong> vers un expert judiciaire si nécessaire'
+            ],
+            cases: [
+                { title: 'Vice caché sur véhicule d\'occasion', description: "Un acheteur a découvert un problème de boîte de vitesses 3 mois après l'achat d'un véhicule d'occasion auprès d'un particulier. L'expertise a révélé un vice antérieur à la vente délibérément masqué par le vendeur.", result: 'Annulation de la vente et remboursement de 12 500 € + 800 € de dommages' },
+                { title: 'Infiltrations dans un bien immobilier', description: "Des infiltrations d'eau importantes sont apparues dans un appartement 6 mois après l'achat. L'ancien propriétaire avait masqué les traces d'humidité par des travaux de peinture avant la vente.", result: 'Indemnisation de 25 000 € pour les travaux de réparation + préjudice de jouissance' },
+                { title: 'Vice caché sur appareil électroménager', description: "Un réfrigérateur professionnel acheté d'occasion pour un restaurant présentait un défaut de compresseur rendant l'appareil inutilisable. Le vendeur professionnel refusait toute garantie.", result: 'Remplacement du bien + 1 200 € d\'indemnisation pour le préjudice commercial' }
+            ],
+            faq: [
+                { question: 'Qu\'est-ce qu\'un vice caché ?', answer: "Un vice caché est un défaut non apparent au moment de la vente qui rend le bien impropre à l'usage auquel il est destiné ou qui diminue tellement cet usage que l'acheteur ne l'aurait pas acquis ou en aurait donné un moindre prix (article 1641 du Code civil). Le vice doit être antérieur à la vente, caché (non visible lors d'un examen normal) et suffisamment grave." },
+                { question: 'Quel est le délai pour agir ?', answer: "L'action en garantie des vices cachés doit être intentée dans un délai de 2 ans à compter de la découverte du vice (article 1648 du Code civil). Ce délai est distinct du délai de la garantie de conformité. Il est important de faire constater le vice rapidement et de notifier le vendeur par courrier recommandé dès la découverte." },
+                { question: 'Quelles sont les options de l\'acheteur ?', answer: "L'acheteur a le choix entre l'action rédhibitoire (rendre le bien et se faire rembourser intégralement) et l'action estimatoire (garder le bien et obtenir une réduction du prix). Si le vendeur connaissait le vice (vendeur de mauvaise foi ou vendeur professionnel présumé connaître les vices), l'acheteur peut en plus obtenir des dommages et intérêts (article 1645)." },
+                { question: 'Comment prouver un vice caché ?', answer: "La preuve du vice caché incombe à l'acheteur. Il doit démontrer l'existence du défaut, son antériorité à la vente et son caractère caché. Une expertise amiable ou judiciaire est souvent nécessaire. Il est recommandé de conserver toutes les preuves : photos, devis de réparation, rapports d'expertise, correspondances avec le vendeur." },
+                { question: 'La clause « vendu en l\'état » est-elle valable ?', answer: "Entre particuliers, une clause d'exclusion de garantie des vices cachés est en principe valable (article 1643 du Code civil). Cependant, elle est inopposable si le vendeur connaissait le vice et l'a dissimulé (vendeur de mauvaise foi). Pour un vendeur professionnel, la clause est présumée inopposable car il est censé connaître les défauts du bien vendu (présomption irréfragable de connaissance)." }
+            ]
+        },
+        'frais-bancaires': {
+            title: 'Frais bancaires abusifs',
+            heroTitle: 'Frais bancaires excessifs ?<br><span class="gradient-text">Contestez et récupérez.</span>',
+            category: 'Droit de la consommation',
+            categorySlug: 'droit-consommation',
+            description: "Les banques sont tenues de respecter une réglementation stricte en matière de frais (loi du 26 juillet 2013, plafonnement des commissions d'intervention). Des frais d'incidents bancaires abusifs, des agios excessifs ou des services facturés sans accord préalable peuvent être contestés. LDJ vous aide à analyser vos relevés, identifier les frais illégitimes et obtenir leur remboursement.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">800 € à 2 000 €</strong> pour une réclamation',
+                'Procédure : <strong class="text-gray-900">complexe</strong> face aux services juridiques bancaires',
+                '<strong class="text-gray-900">Rapport de force</strong> déséquilibré avec la banque',
+                '<strong class="text-gray-900">Méconnaissance</strong> de la réglementation bancaire'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, analyse de vos relevés',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi complet',
+                '<strong class="text-primary-600">Réclamation structurée</strong> auprès de la banque',
+                '<strong class="text-primary-600">Saisine du médiateur</strong> bancaire si nécessaire'
+            ],
+            cases: [
+                { title: 'Commissions d\'intervention excessives', description: "Un client en situation de fragilité financière s'est vu prélever 438 € de commissions d'intervention en un mois, dépassant largement le plafond légal de 25 €/mois pour les clients fragiles.", result: 'Remboursement de 2 800 € de frais sur 8 mois + requalification en client fragile' },
+                { title: 'Frais de tenue de compte non contractuels', description: "Une banque a augmenté unilatéralement les frais de tenue de compte sans respecter le préavis de 2 mois ni le droit de résiliation sans frais prévu par l'article L.312-1-1 du Code monétaire.", result: 'Remboursement de 360 € + rétablissement des anciens tarifs' },
+                { title: 'Clôture de compte abusive', description: "Un auto-entrepreneur s'est vu clôturer son compte bancaire professionnel sans motif légitime ni respect du préavis de 2 mois, le privant de moyens de paiement pour son activité.", result: 'Maintien du compte + 1 500 € de dommages pour le préjudice professionnel' }
+            ],
+            faq: [
+                { question: 'Quels frais bancaires sont plafonnés ?', answer: "Les commissions d'intervention sont plafonnées à 8 € par opération et 80 € par mois pour les clients standards, et à 4 € par opération et 20 € par mois pour les clients en situation de fragilité financière (décret du 17 octobre 2013). Les frais de rejet de chèque sont limités à 30 € (pour les chèques de moins de 50 €) ou 50 €. Les frais de rejet de prélèvement sont plafonnés à 20 €." },
+                { question: 'Comment contester des frais bancaires ?', answer: "Commencez par adresser une réclamation écrite à votre banque (service réclamations). En l'absence de réponse sous 2 mois, ou en cas de réponse insatisfaisante, vous pouvez saisir gratuitement le médiateur bancaire. Si la médiation échoue, vous pouvez saisir le tribunal. LDJ vous aide à rédiger une réclamation efficace et à constituer votre dossier." },
+                { question: 'Ma banque peut-elle clôturer mon compte ?', answer: "Oui, la banque peut clôturer un compte avec un préavis de 2 mois minimum (article L.312-1-1 du Code monétaire et financier). Toutefois, elle ne peut pas discriminer et le droit au compte garantit à toute personne le droit d'ouvrir un compte bancaire. Si vous êtes refusé partout, la Banque de France peut désigner un établissement tenu de vous ouvrir un compte avec des services bancaires de base." },
+                { question: 'Qu\'est-ce que l\'offre spécifique clientèle fragile ?', answer: "Les banques sont tenues de proposer une offre spécifique aux clients en situation de fragilité financière (article L.312-1-3 du Code monétaire et financier). Cette offre, plafonnée à 3 € par mois, comprend un compte de dépôt avec carte à autorisation systématique, des alertes SMS sur le solde, et un plafonnement des frais d'incidents. La banque doit proposer cette offre dès qu'elle identifie la situation de fragilité." },
+                { question: 'Puis-je changer de banque facilement ?', answer: "Oui, la loi Macron de 2015 a instauré le service de mobilité bancaire gratuit et automatisé. Votre nouvelle banque se charge de transférer les prélèvements et virements récurrents en 22 jours ouvrés maximum. Vous pouvez aussi utiliser ce changement comme levier de négociation pour obtenir le remboursement de frais contestés auprès de votre ancienne banque." }
+            ]
+        },
+        'telecoms': {
+            title: 'Litige télécom',
+            heroTitle: 'Problème avec votre opérateur ?<br><span class="gradient-text">Faites respecter vos droits.</span>',
+            category: 'Droit de la consommation',
+            categorySlug: 'droit-consommation',
+            description: "Les litiges avec les opérateurs télécoms sont parmi les plus fréquents en droit de la consommation : surfacturation, résiliation abusive, service non conforme, engagement contesté. Le Code des postes et des communications électroniques et le Code de la consommation protègent les abonnés. LDJ vous aide à contester les pratiques abusives et obtenir le remboursement des sommes indûment prélevées.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">souvent disproportionné</strong> par rapport au litige',
+                'Procédure : <strong class="text-gray-900">longue et décourageante</strong>',
+                '<strong class="text-gray-900">Service client</strong> injoignable ou inefficace',
+                '<strong class="text-gray-900">Frais de résiliation</strong> abusifs imposés'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, analyse de votre contrat',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi du litige',
+                '<strong class="text-primary-600">Mise en demeure</strong> formelle à l\'opérateur',
+                '<strong class="text-primary-600">Saisine du médiateur</strong> des communications électroniques'
+            ],
+            cases: [
+                { title: 'Surfacturation hors forfait', description: "Un abonné a reçu une facture de 1 200 € pour des consommations data hors forfait à l'étranger, sans alerte préalable alors que l'opérateur est tenu d'informer le client lorsqu'il atteint un seuil de consommation.", result: 'Facture ramenée à 89 € + avoir de 50 € sur les prochaines factures' },
+                { title: 'Résiliation abusive avec frais', description: "Un opérateur facturait 350 € de frais de résiliation pour un contrat soi-disant engagé 24 mois, alors que le client avait souscrit une offre sans engagement. Aucun document contractuel prouvant l'engagement.", result: 'Annulation des frais de résiliation + remboursement de 180 € déjà prélevés' },
+                { title: 'Service internet non conforme', description: "Un abonné fibre optique ne bénéficiait que de 15% du débit annoncé dans son contrat depuis l'installation, malgré de multiples réclamations et interventions techniques infructueuses.", result: 'Résiliation sans frais + indemnité de 400 € pour 8 mois de service dégradé' }
+            ],
+            faq: [
+                { question: 'Comment résilier un contrat télécom ?', answer: "Depuis la loi Chatel (2008), les contrats de plus de 12 mois doivent pouvoir être résiliés à partir du 13e mois moyennant au maximum 25% des mensualités restantes. Les offres sans engagement peuvent être résiliées à tout moment avec un préavis de 10 jours. Depuis 2023, la résiliation doit pouvoir être effectuée en 3 clics sur le site de l'opérateur." },
+                { question: 'Que faire face à une surfacturation ?', answer: "Contestez immédiatement la facture par écrit (réclamation au service client, puis au service réclamations). Demandez le détail de la facturation et les preuves des consommations. Si l'opérateur ne répond pas sous 30 jours, saisissez le médiateur des communications électroniques gratuitement. En attendant, ne payez que la partie non contestée de la facture." },
+                { question: 'Qu\'est-ce que le médiateur des communications ?', answer: "Le médiateur des communications électroniques est un organisme indépendant chargé de résoudre les litiges entre les consommateurs et les opérateurs. Sa saisine est gratuite et possible après une réclamation écrite restée sans réponse pendant 30 jours. Il rend un avis dans un délai de 90 jours. Son avis n'est pas contraignant mais est suivi dans plus de 80% des cas." },
+                { question: 'Mon opérateur peut-il modifier mon contrat unilatéralement ?', answer: "L'opérateur peut modifier les conditions contractuelles avec un préavis d'au moins 1 mois (article L.224-33 du Code de la consommation). Vous avez alors le droit de résilier sans frais ni pénalité dans les 4 mois suivant la notification de la modification. Si la modification entraîne une augmentation de prix, l'opérateur doit vous en informer clairement." },
+                { question: 'Puis-je garder mon numéro en changeant d\'opérateur ?', answer: "Oui, la portabilité du numéro est un droit garanti. Votre nouvel opérateur se charge de toutes les démarches. Le portage doit être effectif en 1 jour ouvrable maximum. L'ancien opérateur ne peut pas facturer de frais de portabilité. La souscription auprès du nouvel opérateur entraîne automatiquement la résiliation de l'ancien contrat." }
+            ]
+        },
+        'assurance': {
+            title: 'Litige assurance',
+            heroTitle: 'Votre assureur refuse de payer ?<br><span class="gradient-text">Contestez le refus.</span>',
+            category: 'Droit de la consommation',
+            categorySlug: 'droit-consommation',
+            description: "Les litiges avec les assureurs sont fréquents : refus de prise en charge, sous-estimation des indemnités, clauses d'exclusion abusives, résiliation unilatérale. Le Code des assurances protège les assurés et encadre strictement les obligations des assureurs. LDJ vous accompagne pour contester un refus de garantie, obtenir une juste indemnisation ou faire valoir vos droits face à votre assureur.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">2 000 € à 6 000 €</strong> selon le sinistre',
+                'Expert d\'assuré : <strong class="text-gray-900">1 000 € à 3 000 €</strong> en contre-expertise',
+                '<strong class="text-gray-900">Déséquilibre</strong> face aux experts de l\'assureur',
+                '<strong class="text-gray-900">Indemnisation minorée</strong> sans contestation'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, analyse de votre contrat et du sinistre',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi du dossier sinistre',
+                '<strong class="text-primary-600">Contestation argumentée</strong> du refus ou de l\'offre',
+                '<strong class="text-primary-600">Saisine du médiateur</strong> de l\'assurance'
+            ],
+            cases: [
+                { title: 'Refus de garantie infondé', description: "Un assureur refusait de couvrir un dégât des eaux invoquant une clause d'exclusion pour défaut d'entretien. L'expertise a démontré que le sinistre provenait d'une canalisation collective, rendant la clause inapplicable.", result: 'Prise en charge intégrale des travaux : 8 700 € + relogement pendant les travaux' },
+                { title: 'Sous-estimation d\'indemnité vol', description: "Après un cambriolage, l'assureur proposait une indemnisation de 3 200 € alors que les biens volés étaient estimés à 9 500 €. Application abusive du coefficient de vétusté et non-respect de la valeur de remplacement.", result: 'Indemnisation réévaluée à 8 100 € après contre-expertise' },
+                { title: 'Résiliation abusive après sinistre', description: "Un assureur a résilié un contrat habitation après un seul sinistre déclaré en 5 ans, en dehors des cas prévus par le contrat et l'article L.113-4 du Code des assurances.", result: 'Annulation de la résiliation + 1 000 € de dommages et intérêts' }
+            ],
+            faq: [
+                { question: 'Que faire si mon assureur refuse de m\'indemniser ?', answer: "Commencez par demander une explication écrite du refus avec les références contractuelles et légales. Vérifiez les clauses de votre contrat et les exclusions invoquées. Adressez une réclamation écrite au service réclamations. Si le refus persiste, saisissez le médiateur de l'assurance gratuitement. En dernier recours, un avocat spécialisé peut contester le refus devant les tribunaux." },
+                { question: 'Puis-je contester l\'expertise de l\'assureur ?', answer: "Oui, vous avez le droit de demander une contre-expertise à vos frais (article L.121-1 du Code des assurances). Si les deux experts ne s'accordent pas, un troisième expert peut être désigné d'un commun accord ou par le juge. Vous pouvez aussi contester le rapport d'expertise en apportant des devis contradictoires, des factures ou des témoignages." },
+                { question: 'Quel est le délai pour déclarer un sinistre ?', answer: "Le délai général de déclaration est de 5 jours ouvrés à compter de la connaissance du sinistre (article L.113-2 du Code des assurances). Ce délai est réduit à 2 jours ouvrés en cas de vol et à 10 jours en cas de catastrophe naturelle. Le non-respect du délai ne peut entraîner la déchéance de garantie que si l'assureur prouve un préjudice." },
+                { question: 'Les clauses d\'exclusion sont-elles toujours valables ?', answer: "Non. Les clauses d'exclusion doivent être formelles et limitées (article L.113-1 du Code des assurances). Elles doivent figurer en caractères très apparents dans le contrat. Une clause d'exclusion trop vague, trop générale ou qui vide le contrat de sa substance peut être déclarée abusive et réputée non écrite par le juge." },
+                { question: 'Comment résilier mon contrat d\'assurance ?', answer: "Depuis la loi Hamon (2015), les contrats auto, habitation et affinitaires peuvent être résiliés à tout moment après 1 an, sans frais ni pénalité. Votre nouvel assureur se charge des formalités. La loi Châtel impose à l'assureur de vous informer de la date d'échéance et de votre droit de résiliation au moins 15 jours avant. À défaut, vous pouvez résilier sans délai." }
+            ]
+        },
+        'loyers-impayes': {
+            title: 'Loyers impayés',
+            heroTitle: 'Loyers impayés ?<br><span class="gradient-text">Récupérez votre dû.</span>',
+            category: 'Droit immobilier',
+            categorySlug: 'droit-immobilier',
+            description: "Les loyers impayés constituent le litige locatif le plus fréquent. La loi du 6 juillet 1989 encadre les rapports entre bailleurs et locataires. Le bailleur dispose de plusieurs recours : commandement de payer, clause résolutoire, assignation en justice. Parallèlement, le locataire en difficulté peut bénéficier de délais de paiement. LDJ accompagne les deux parties pour trouver une solution rapide et équitable.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">2 000 € à 4 000 €</strong> pour la procédure',
+                'Huissier : <strong class="text-gray-900">500 € à 1 500 €</strong> pour les actes',
+                'Procédure : <strong class="text-gray-900">12 à 36 mois</strong> avec la trêve hivernale',
+                '<strong class="text-gray-900">Perte financière</strong> croissante pendant la procédure'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, évaluation de la situation',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi personnalisé',
+                '<strong class="text-primary-600">Commandement de payer</strong> et relances formelles',
+                '<strong class="text-primary-600">Médiation</strong> ou orientation vers la procédure d\'expulsion'
+            ],
+            cases: [
+                { title: 'Recouvrement amiable de 6 mois d\'impayés', description: "Un propriétaire n'avait pas perçu de loyer depuis 6 mois (dette de 5 400 €). Le locataire traversait une période difficile mais souhaitait rester. Mise en place d'un plan d'apurement amiable via LDJ.", result: 'Plan d\'apurement signé : dette remboursée en 12 mensualités + reprise du loyer courant' },
+                { title: 'Résiliation du bail et expulsion', description: "Un locataire ne payait plus son loyer depuis 10 mois malgré les relances. Signification d'un commandement de payer par huissier, puis assignation devant le tribunal judiciaire pour résiliation du bail.", result: 'Résiliation du bail + condamnation au paiement de 9 200 € d\'arriérés' },
+                { title: 'Activation de la garantie Visale', description: "Un bailleur avait un locataire bénéficiant de la garantie Visale (Action Logement). Après 3 mois d'impayés, LDJ a accompagné le bailleur dans la déclaration d'impayé et l'activation de la garantie.", result: 'Indemnisation de 2 700 € par Visale + plan de relogement du locataire' }
+            ],
+            faq: [
+                { question: 'Que faire dès le premier loyer impayé ?', answer: "Contactez immédiatement le locataire pour comprendre la situation. Envoyez ensuite une lettre de relance en recommandé avec accusé de réception. Si aucune réponse ou paiement n'intervient sous 15 jours, faites signifier un commandement de payer par huissier visant la clause résolutoire du bail. Le locataire dispose alors de 2 mois pour régulariser sa situation (article 24 de la loi du 6 juillet 1989)." },
+                { question: 'Qu\'est-ce que la trêve hivernale ?', answer: "La trêve hivernale interdit l'exécution des expulsions du 1er novembre au 31 mars de l'année suivante (article L.412-6 du Code des procédures civiles d'exécution). Elle ne suspend pas les procédures judiciaires : vous pouvez obtenir un jugement d'expulsion pendant cette période, mais son exécution sera reportée. Exception : les squatteurs ne bénéficient pas de la trêve hivernale." },
+                { question: 'Puis-je couper l\'eau ou l\'électricité ?', answer: "Non, il est strictement interdit de couper les fluides, changer les serrures ou harceler le locataire pour le pousser à partir. Ces pratiques constituent un délit de mise en danger d'autrui ou de violation de domicile, puni de 3 ans d'emprisonnement et 30 000 € d'amende (article 226-4 du Code pénal). Seule la procédure légale d'expulsion avec concours de la force publique est autorisée." },
+                { question: 'Combien de temps dure une procédure d\'expulsion ?', answer: "La procédure complète peut prendre de 6 mois à plus de 2 ans : commandement de payer (2 mois de délai), assignation devant le tribunal (2-6 mois d'audience), délai d'appel (1 mois), commandement de quitter les lieux (2 mois), demande de concours de la force publique (2-6 mois), plus la trêve hivernale. Des délais de grâce de 3 mois à 3 ans peuvent être accordés au locataire." },
+                { question: 'L\'assurance loyers impayés (GLI) couvre-t-elle tout ?', answer: "La GLI couvre généralement les loyers impayés, les charges, les dégradations locatives et les frais de contentieux, avec un plafond et une durée d'indemnisation variables selon les contrats (souvent 70 000 € à 100 000 € sur 18 à 30 mois). Attention aux délais de carence et de franchise. Vous devez déclarer le sinistre dans le délai contractuel et respecter les obligations de mise en recouvrement." }
+            ]
+        },
+        'litige-locatif': {
+            title: 'Litige locatif',
+            heroTitle: 'Litige avec votre propriétaire ou locataire ?<br><span class="gradient-text">Résolvez le conflit.</span>',
+            category: 'Droit immobilier',
+            categorySlug: 'droit-immobilier',
+            description: "Les litiges locatifs couvrent un large spectre : état des lieux contesté, retenue abusive sur le dépôt de garantie, travaux non réalisés, trouble de jouissance, augmentation de loyer irrégulière. La loi du 6 juillet 1989 et la loi ALUR de 2014 encadrent précisément les droits et obligations du bailleur et du locataire. LDJ vous accompagne pour résoudre efficacement votre litige locatif.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">1 500 € à 3 000 €</strong> pour un litige locatif',
+                'Procédure : <strong class="text-gray-900">6 à 18 mois</strong> devant le tribunal',
+                '<strong class="text-gray-900">Relations dégradées</strong> avec le bailleur/locataire',
+                '<strong class="text-gray-900">Méconnaissance</strong> des droits et obligations de chacun'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, analyse de votre bail et de la situation',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi du dossier',
+                '<strong class="text-primary-600">Mise en demeure</strong> et médiation amiable',
+                '<strong class="text-primary-600">Saisine de la commission</strong> de conciliation si nécessaire'
+            ],
+            cases: [
+                { title: 'Restitution du dépôt de garantie', description: "Un bailleur retenait l'intégralité du dépôt de garantie (1 800 €) pour des « dégradations » qui correspondaient en réalité à l'usure normale du logement après 5 ans d'occupation. Aucun justificatif de travaux fourni.", result: 'Restitution de 1 600 € + pénalité de 10% par mois de retard' },
+                { title: 'Logement insalubre non réparé', description: "Un locataire vivait dans un logement présentant des infiltrations, des moisissures et un système de chauffage défaillant. Le bailleur refusait d'effectuer les travaux malgré plusieurs relances écrites.", result: 'Travaux ordonnés par le tribunal + réduction de loyer de 30% pendant 8 mois' },
+                { title: 'Augmentation de loyer illégale', description: "Un bailleur avait augmenté le loyer de 15% lors du renouvellement du bail, sans respecter l'encadrement des loyers en zone tendue ni l'indice de référence des loyers (IRL).", result: 'Annulation de l\'augmentation + remboursement de 1 400 € de trop-perçu' }
+            ],
+            faq: [
+                { question: 'Quand le dépôt de garantie doit-il être restitué ?', answer: "Le bailleur doit restituer le dépôt de garantie dans un délai d'un mois si l'état des lieux de sortie est conforme à l'état des lieux d'entrée, ou de 2 mois en cas de différences (article 22 de la loi du 6 juillet 1989). Toute retenue doit être justifiée par des documents (devis, factures, photos). En cas de retard, une majoration de 10% du loyer mensuel par mois de retard est due." },
+                { question: 'Quels travaux incombent au propriétaire ?', answer: "Le bailleur doit assurer les grosses réparations (toiture, murs, canalisations, chauffage collectif) et délivrer un logement décent conforme aux critères du décret du 30 janvier 2002 (surface minimale, absence de risques pour la santé et la sécurité, équipements fonctionnels). Le locataire est responsable de l'entretien courant et des menues réparations (article 7 de la loi de 1989)." },
+                { question: 'Comment contester une augmentation de loyer ?', answer: "En zone tendue, le loyer est encadré et ne peut être augmenté au-delà de l'IRL sauf travaux d'amélioration ou loyer manifestement sous-évalué. Pour contester, saisissez la commission départementale de conciliation (CDC) puis, en cas d'échec, le juge des contentieux de la protection. En zone soumise à l'encadrement des loyers (Paris, Lyon, etc.), vérifiez que le loyer ne dépasse pas le plafond applicable." },
+                { question: 'Puis-je réduire mon loyer si le logement est insalubre ?', answer: "Le juge peut accorder une réduction de loyer si le logement ne remplit pas les critères de décence ou si le bailleur ne remplit pas son obligation d'entretien. Vous ne pouvez pas décider unilatéralement de réduire votre loyer, mais vous pouvez saisir le juge des contentieux de la protection en référé (urgence) pour obtenir une ordonnance de réduction et la réalisation des travaux sous astreinte." },
+                { question: 'Qu\'est-ce que la commission de conciliation ?', answer: "La commission départementale de conciliation (CDC) est un organisme gratuit qui tente de résoudre amiablement certains litiges locatifs : état des lieux, dépôt de garantie, charges, travaux, loyer. Sa saisine est un préalable obligatoire avant de saisir le juge pour les litiges portant sur le loyer et les charges. La commission dispose de 2 mois pour rendre un avis de conciliation." }
+            ]
+        },
+        'trouble-voisinage': {
+            title: 'Trouble de voisinage',
+            heroTitle: 'Nuisances de voisinage ?<br><span class="gradient-text">Retrouvez votre tranquillité.</span>',
+            category: 'Droit immobilier',
+            categorySlug: 'droit-immobilier',
+            description: "Les troubles de voisinage (bruit, odeurs, empiètements, vues, plantations) sont une source majeure de conflits. La théorie des troubles anormaux du voisinage, d'origine jurisprudentielle et codifiée à l'article 1253 du Code civil, permet d'obtenir la cessation du trouble et des dommages et intérêts sans avoir à prouver une faute. LDJ vous aide à résoudre ces conflits de manière amiable ou judiciaire.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">1 500 € à 4 000 €</strong> pour une action',
+                'Constat d\'huissier : <strong class="text-gray-900">300 € à 800 €</strong> par intervention',
+                '<strong class="text-gray-900">Détérioration</strong> des relations de voisinage',
+                '<strong class="text-gray-900">Stress quotidien</strong> et impact sur la santé'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, évaluation du trouble',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec médiation incluse',
+                '<strong class="text-primary-600">Courrier de mise en demeure</strong> professionnel',
+                '<strong class="text-primary-600">Médiation de voisinage</strong> ou action judiciaire'
+            ],
+            cases: [
+                { title: 'Nuisances sonores nocturnes répétées', description: "Un voisin organisait des soirées bruyantes plusieurs fois par semaine jusqu'à 3h du matin, causant des troubles du sommeil documentés par un certificat médical et plusieurs mains courantes.", result: 'Cessation des nuisances après médiation + 2 500 € de dommages et intérêts' },
+                { title: 'Empiètement sur propriété voisine', description: "Un voisin avait construit un abri de jardin empiétant de 50 cm sur la propriété mitoyenne. Refus de démolir malgré le bornage contradictoire confirmant l'empiètement.", result: 'Démolition ordonnée par le tribunal + 3 000 € de dommages' },
+                { title: 'Nuisances olfactives d\'un commerce', description: "Un restaurant de quartier causait des nuisances olfactives importantes (odeurs de friture et fumée) en raison d'un système d'extraction défaillant. Plaintes multiples du voisinage.", result: 'Mise aux normes du système d\'extraction + 4 000 € d\'indemnisation pour les riverains' }
+            ],
+            faq: [
+                { question: 'Qu\'est-ce qu\'un trouble anormal de voisinage ?', answer: "Le trouble anormal de voisinage est un trouble qui excède les inconvénients normaux du voisinage par son intensité, sa durée ou sa fréquence. Il ne nécessite pas de prouver une faute du voisin : c'est une responsabilité sans faute (article 1253 du Code civil). Le juge apprécie le caractère anormal en tenant compte de l'environnement, du moment, de la durée et de l'intensité du trouble." },
+                { question: 'Comment prouver un trouble de voisinage ?', answer: "Constituez un dossier solide : journal de bord des nuisances (dates, heures, durée), témoignages écrits d'autres voisins, certificats médicaux, constats d'huissier (particulièrement pour le bruit nocturne), mesures acoustiques par un professionnel, photos et vidéos, copies des mains courantes ou plaintes déposées." },
+                { question: 'La mairie peut-elle intervenir ?', answer: "Oui, le maire dispose d'un pouvoir de police en matière de troubles de voisinage (article L.2212-2 du CGCT). Il peut prendre des arrêtés pour réglementer le bruit (horaires de travaux, musique) et dresser des procès-verbaux. Le tapage nocturne (entre 22h et 7h) est une contravention punie de 68 € d'amende. Vous pouvez aussi saisir l'ARS pour des nuisances sanitaires." },
+                { question: 'Quelles sont les règles pour les arbres et plantations ?', answer: "L'article 671 du Code civil impose des distances minimales de plantation : 2 mètres de la limite de propriété pour les arbres de plus de 2 mètres de hauteur, 50 centimètres pour les autres. Le voisin peut exiger l'arrachage ou la réduction à la hauteur prescrite des plantations ne respectant pas ces distances, sauf si elles ont été plantées depuis plus de 30 ans (prescription trentenaire)." },
+                { question: 'La médiation est-elle obligatoire avant de saisir le juge ?', answer: "Pour les litiges de voisinage d'un montant inférieur à 5 000 €, une tentative de résolution amiable préalable est obligatoire avant de saisir le tribunal (article 750-1 du Code de procédure civile). Cela peut prendre la forme d'une médiation, d'une conciliation ou d'une procédure participative. Le conciliateur de justice, gratuit, est souvent une première étape efficace." }
+            ]
+        },
+        'copropriete': {
+            title: 'Litige de copropriété',
+            heroTitle: 'Problème en copropriété ?<br><span class="gradient-text">Défendez vos intérêts.</span>',
+            category: 'Droit immobilier',
+            categorySlug: 'droit-immobilier',
+            description: "La copropriété est régie par la loi du 10 juillet 1965 et son décret d'application du 17 mars 1967, profondément réformés par la loi ELAN de 2018 et l'ordonnance du 30 octobre 2019. Les litiges sont fréquents : contestation de décisions d'assemblée générale, charges impayées, travaux non autorisés, conflits avec le syndic. LDJ vous accompagne pour faire valoir vos droits de copropriétaire.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">2 000 € à 5 000 €</strong> pour contester une AG',
+                'Procédure : <strong class="text-gray-900">12 à 24 mois</strong> devant le tribunal',
+                '<strong class="text-gray-900">Complexité</strong> du droit de la copropriété',
+                '<strong class="text-gray-900">Conflits</strong> avec le syndic ou les copropriétaires'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, analyse de votre règlement de copropriété',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi des assemblées',
+                '<strong class="text-primary-600">Contestation</strong> de décisions d\'AG argumentée',
+                '<strong class="text-primary-600">Médiation</strong> avec le syndic et les copropriétaires'
+            ],
+            cases: [
+                { title: 'Contestation de décision d\'AG', description: "Une assemblée générale avait voté des travaux importants (ravalement de 180 000 €) sans respecter les règles de majorité requises à l'article 26 de la loi de 1965. Un copropriétaire contestait la régularité du vote.", result: 'Annulation de la résolution + report du vote avec majorité correcte' },
+                { title: 'Charges impayées par un copropriétaire', description: "Un copropriétaire ne payait plus ses charges depuis 18 mois, mettant en difficulté la trésorerie du syndicat. Le syndic avait tardé à agir malgré les demandes du conseil syndical.", result: 'Injonction de payer obtenue en 6 semaines + recouvrement de 8 400 € d\'arriérés' },
+                { title: 'Travaux privatifs non autorisés', description: "Un copropriétaire avait réalisé des travaux affectant les parties communes (percement d'un mur porteur) sans autorisation de l'assemblée générale, en violation de l'article 25b de la loi de 1965.", result: 'Remise en état ordonnée à la charge du copropriétaire + 5 000 € de dommages' }
+            ],
+            faq: [
+                { question: 'Comment contester une décision d\'assemblée générale ?', answer: "Tout copropriétaire opposant ou défaillant peut contester une décision d'AG dans un délai de 2 mois à compter de la notification du procès-verbal (article 42 de la loi de 1965). L'action doit être portée devant le tribunal judiciaire. Les motifs de contestation incluent : vice de forme (convocation irrégulière, majorité non atteinte), abus de majorité, ou décision contraire au règlement de copropriété." },
+                { question: 'Puis-je changer de syndic ?', answer: "Oui, le syndic peut être révoqué et remplacé à tout moment par vote en assemblée générale à la majorité de l'article 25 (majorité des voix de tous les copropriétaires). Si un tiers au moins des copropriétaires le demande, le syndic est tenu de convoquer une AG. La mise en concurrence du syndic est obligatoire tous les 3 ans ou lors du renouvellement du contrat." },
+                { question: 'Qui paie les travaux en copropriété ?', answer: "Les travaux sont répartis entre les copropriétaires selon les tantièmes de charges définis dans le règlement de copropriété. Les travaux d'entretien courant (toiture, façade, escaliers) sont répartis selon les charges générales. Les travaux sur les équipements communs (ascenseur, chauffage) sont répartis selon les charges spéciales. Le fonds de travaux obligatoire (loi ALUR) permet de provisionner les dépenses futures." },
+                { question: 'Le syndic peut-il engager des dépenses sans vote ?', answer: "Le syndic peut engager des travaux urgents nécessaires à la sauvegarde de l'immeuble sans vote préalable (article 18 de la loi de 1965). Il doit cependant en informer les copropriétaires et convoquer une AG pour ratifier les dépenses. Pour les dépenses courantes (entretien, petites réparations), le budget prévisionnel voté en AG l'autorise à les engager." },
+                { question: 'Que faire si un copropriétaire cause des nuisances ?', answer: "Le règlement de copropriété fixe les règles de jouissance des parties privatives et communes. En cas de nuisances (bruit, encombrement des parties communes, odeurs), le syndic peut mettre en demeure le copropriétaire fautif. Si les nuisances persistent, le syndicat des copropriétaires peut agir en justice pour obtenir la cessation du trouble et des dommages et intérêts." }
+            ]
+        },
+        'erreur-medicale': {
+            title: 'Erreur médicale',
+            heroTitle: 'Victime d\'une erreur médicale ?<br><span class="gradient-text">Obtenez justice et réparation.</span>',
+            category: 'Droit de la santé',
+            categorySlug: 'droit-sante',
+            description: "L'erreur médicale engage la responsabilité du professionnel de santé ou de l'établissement lorsqu'un acte de prévention, de diagnostic ou de soin est fautif (article L.1142-1 du Code de la santé publique). Même en l'absence de faute, l'aléa thérapeutique peut être indemnisé par l'ONIAM via la solidarité nationale. LDJ vous accompagne dans l'analyse de votre dossier médical et les démarches d'indemnisation.",
+            sansLDJ: [
+                'Avocat spécialisé : <strong class="text-gray-900">3 000 € à 10 000 €</strong>',
+                'Expertise médicale : <strong class="text-gray-900">1 000 € à 3 000 €</strong>',
+                '<strong class="text-gray-900">Procédure complexe</strong> et très technique',
+                '<strong class="text-gray-900">Rapport de force</strong> défavorable face aux assureurs'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, analyse préliminaire du dossier médical',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi d\'expertise',
+                '<strong class="text-primary-600">Saisine de la CCI</strong> (Commission de conciliation et d\'indemnisation)',
+                '<strong class="text-primary-600">Avocat partenaire</strong> spécialisé en responsabilité médicale'
+            ],
+            cases: [
+                { title: 'Diagnostic tardif de cancer', description: "Un patient présentait des symptômes évocateurs depuis 18 mois mais son médecin n'a pas prescrit les examens appropriés. Le retard de diagnostic a entraîné une perte de chance de guérison estimée à 40%.", result: 'Indemnisation de 85 000 € pour perte de chance + préjudices associés' },
+                { title: 'Erreur chirurgicale', description: "Une intervention de chirurgie orthopédique a causé une lésion nerveuse entraînant une paralysie partielle de la main. L'expertise a révélé un geste technique non conforme aux données acquises de la science.", result: '120 000 € d\'indemnisation (DFP + souffrances + préjudice professionnel)' },
+                { title: 'Infection nosocomiale', description: "Un patient a contracté une infection nosocomiale (staphylocoque doré) après une prothèse de hanche, entraînant 6 mois d'hospitalisation supplémentaire et des séquelles permanentes.", result: 'Indemnisation de 95 000 € par l\'établissement de santé (responsabilité sans faute)' }
+            ],
+            faq: [
+                { question: 'Comment prouver une erreur médicale ?', answer: "La preuve de la faute médicale incombe au patient (article L.1142-1 du CSP). Il doit démontrer une faute du professionnel, un dommage et un lien de causalité entre les deux. L'expertise médicale (amiable ou judiciaire) est quasi indispensable. Conservez l'intégralité de votre dossier médical : vous y avez accès de droit (article L.1111-7 du CSP) dans un délai de 8 jours." },
+                { question: 'Qu\'est-ce que la CCI et comment la saisir ?', answer: "La Commission de conciliation et d'indemnisation (CCI, ex-CRCI) est une procédure gratuite et rapide (6 mois environ) pour obtenir une indemnisation des accidents médicaux, affections iatrogènes et infections nosocomiales. Elle est compétente lorsque le dommage dépasse un seuil de gravité (6 mois d'ITT, 24% d'IPP, ou inaptitude professionnelle). Un expert est désigné pour examiner le dossier." },
+                { question: 'Qu\'est-ce que l\'aléa thérapeutique ?', answer: "L'aléa thérapeutique est un accident médical survenu sans faute du professionnel, lié à un risque inhérent à l'acte médical. Depuis la loi Kouchner du 4 mars 2002, l'aléa thérapeutique est indemnisé par la solidarité nationale via l'ONIAM (Office National d'Indemnisation des Accidents Médicaux) lorsque le dommage dépasse le seuil de gravité requis. Le patient n'a pas besoin de prouver une faute." },
+                { question: 'Quel est le délai pour agir ?', answer: "Le délai de prescription est de 10 ans à compter de la consolidation du dommage (article L.1142-28 du CSP). La consolidation est le moment où l'état de santé n'évolue plus. Ce délai relativement long permet d'agir même longtemps après l'acte médical. La saisine de la CCI interrompt le délai de prescription." },
+                { question: 'L\'hôpital est-il responsable des infections nosocomiales ?', answer: "Oui, les établissements de santé sont responsables de plein droit (sans faute) des infections nosocomiales, sauf s'ils prouvent une cause étrangère (article L.1142-1-1 du CSP). Pour les infections les plus graves (décès ou IPP > 25%), c'est l'ONIAM qui indemnise au titre de la solidarité nationale. Les médecins libéraux, en revanche, ne sont responsables qu'en cas de faute prouvée." }
+            ]
+        },
+        'indemnisation': {
+            title: 'Indemnisation corporelle',
+            heroTitle: 'Victime d\'un accident ?<br><span class="gradient-text">Obtenez une juste indemnisation.</span>',
+            category: 'Droit de la santé',
+            categorySlug: 'droit-sante',
+            description: "L'indemnisation du préjudice corporel vise à réparer intégralement les dommages subis par la victime d'un accident (circulation, travail, vie courante, agression). La nomenclature Dintilhac distingue plus de 25 postes de préjudice : déficit fonctionnel, souffrances endurées, préjudice esthétique, perte de revenus, assistance par tierce personne. LDJ vous aide à obtenir une indemnisation juste et complète.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">3 000 € à 15 000 €</strong> (souvent au résultat)',
+                'Expert médical : <strong class="text-gray-900">800 € à 2 500 €</strong>',
+                '<strong class="text-gray-900">Offre d\'assurance minorée</strong> de 30 à 50%',
+                '<strong class="text-gray-900">Procédure longue</strong> et émotionnellement éprouvante'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, évaluation préliminaire des préjudices',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec suivi de l\'expertise',
+                '<strong class="text-primary-600">Assistance à l\'expertise</strong> médicale (médecin-conseil)',
+                '<strong class="text-primary-600">Négociation</strong> avec l\'assureur pour maximiser l\'indemnisation'
+            ],
+            cases: [
+                { title: 'Accident de la route avec blessures', description: "Un piéton renversé par un véhicule a subi des fractures multiples et un traumatisme crânien. L'assureur du responsable proposait une indemnisation de 45 000 € largement insuffisante au regard des préjudices.", result: 'Indemnisation finale de 128 000 € après négociation et expertise contradictoire' },
+                { title: 'Accident du travail avec séquelles', description: "Un ouvrier victime d'une chute sur un chantier a subi une incapacité permanente partielle de 15%. L'employeur n'avait pas respecté les règles de sécurité (absence de garde-corps). Faute inexcusable reconnue.", result: 'Majoration de la rente AT + 45 000 € d\'indemnisation complémentaire' },
+                { title: 'Agression avec préjudice corporel', description: "Victime d'une agression dans un lieu public, un homme a subi un traumatisme facial nécessitant une chirurgie reconstructrice. L'auteur étant insolvable, saisine de la CIVI pour indemnisation par le FGTI.", result: 'Indemnisation de 35 000 € par le FGTI (Fonds de Garantie des victimes)' }
+            ],
+            faq: [
+                { question: 'Qu\'est-ce que la nomenclature Dintilhac ?', answer: "La nomenclature Dintilhac est la classification de référence des postes de préjudice corporel, utilisée par les juridictions et les assureurs. Elle distingue les préjudices patrimoniaux (pertes de revenus, frais médicaux, adaptation du logement, tierce personne) et extrapatrimoniaux (souffrances, déficit fonctionnel, préjudice esthétique, sexuel, d'agrément, d'établissement), temporaires et permanents." },
+                { question: 'Dois-je accepter la première offre de l\'assureur ?', answer: "Non, les premières offres des assureurs sont systématiquement inférieures à ce que vous pouvez obtenir. L'assureur est tenu de faire une offre dans les 8 mois suivant l'accident (loi Badinter pour les accidents de la route), mais cette offre est négociable. Il est fortement recommandé de vous faire assister par un médecin-conseil et un juriste pour évaluer vos préjudices avant d'accepter." },
+                { question: 'Qu\'est-ce que la consolidation ?', answer: "La consolidation est le moment où l'état de santé de la victime est stabilisé et n'évoluera plus de manière significative, favorablement ou défavorablement. C'est à partir de cette date que les préjudices permanents (déficit fonctionnel permanent, préjudice esthétique permanent) peuvent être évalués et l'indemnisation définitive calculée. La date de consolidation est fixée par l'expert médical." },
+                { question: 'Qu\'est-ce que la CIVI ?', answer: "La Commission d'indemnisation des victimes d'infractions (CIVI) permet aux victimes d'infractions pénales de demander une indemnisation par le FGTI (Fonds de Garantie des victimes du Terrorisme et d'autres Infractions) lorsque l'auteur est inconnu, en fuite ou insolvable. Elle est compétente pour les atteintes graves à la personne (plus de 30 jours d'ITT). Le délai de saisine est de 3 ans à compter de l'infraction." },
+                { question: 'Puis-je être indemnisé même si je suis partiellement responsable ?', answer: "Pour les accidents de la route, la loi Badinter du 5 juillet 1985 protège les piétons, cyclistes et passagers : ils sont indemnisés même en cas de faute (sauf faute inexcusable, cause exclusive de l'accident). Pour les conducteurs, l'indemnisation peut être réduite en proportion de leur faute. Pour les autres accidents, le partage de responsabilité est apprécié au cas par cas." }
+            ]
+        },
+        'naturalisation': {
+            title: 'Naturalisation',
+            heroTitle: 'Demande de nationalité française ?<br><span class="gradient-text">Sécurisez votre dossier.</span>',
+            category: 'Droit administratif',
+            categorySlug: 'droit-administratif',
+            description: "La naturalisation est l'acquisition de la nationalité française par décision de l'autorité publique (articles 21-14-1 et suivants du Code civil). Le demandeur doit remplir des conditions de résidence, d'assimilation, de moralité et d'insertion professionnelle. La procédure comporte un entretien individuel et l'examen du dossier par la préfecture puis le ministère de l'Intérieur. LDJ vous aide à constituer un dossier solide et à contester un éventuel refus.",
+            sansLDJ: [
+                'Avocat : <strong class="text-gray-900">2 000 € à 5 000 €</strong> pour un recours',
+                'Procédure : <strong class="text-gray-900">18 à 36 mois</strong> en cas de refus',
+                '<strong class="text-gray-900">Dossier incomplet</strong> entraînant un refus',
+                '<strong class="text-gray-900">Méconnaissance</strong> des critères d\'appréciation'
+            ],
+            avecLDJ: [
+                'Diagnostic : <strong class="text-primary-600">0 €</strong>, évaluation de votre éligibilité',
+                'Abonnement : <strong class="text-primary-600">19,90 €/mois</strong> avec aide à la constitution du dossier',
+                '<strong class="text-primary-600">Préparation</strong> à l\'entretien d\'assimilation',
+                '<strong class="text-primary-600">Recours</strong> en cas d\'ajournement ou de refus'
+            ],
+            cases: [
+                { title: 'Dossier de naturalisation accepté', description: "Un résident étranger vivant en France depuis 7 ans avait vu sa première demande ajournée pour « insertion professionnelle insuffisante ». LDJ l'a aidé à renforcer son dossier avec des preuves d'intégration et un CDI.", result: 'Naturalisation accordée 14 mois après le nouveau dépôt de dossier' },
+                { title: 'Recours après refus de naturalisation', description: "Un demandeur s'est vu refuser la naturalisation malgré 10 ans de résidence en France, un CDI et une parfaite maîtrise du français. Motif invoqué : « défaut d'assimilation » non justifié.", result: 'Recours gracieux accepté par le ministère, naturalisation accordée' },
+                { title: 'Ajournement contesté avec succès', description: "Un entrepreneur étranger avait vu sa demande ajournée pour 2 ans malgré un dossier solide. Le motif d'ajournement mentionnait des « revenus insuffisants » alors que l'entreprise était bénéficiaire.", result: 'Annulation de l\'ajournement par le tribunal administratif + injonction de réexamen' }
+            ],
+            faq: [
+                { question: 'Quelles sont les conditions de la naturalisation ?', answer: "Pour être naturalisé, il faut : résider en France de manière stable et habituelle depuis au moins 5 ans (réduit à 2 ans pour un diplôme d'un établissement français, et dispensé pour les réfugiés), être majeur, avoir des ressources suffisantes, ne pas avoir fait l'objet de certaines condamnations pénales, justifier d'une assimilation à la communauté française (langue, connaissances, adhésion aux valeurs de la République)." },
+                { question: 'Comment se déroule l\'entretien d\'assimilation ?', answer: "L'entretien se déroule en préfecture avec un agent. Il porte sur votre connaissance de la langue française (niveau B1 oral requis), de l'histoire, de la culture et de la société française, ainsi que des droits et devoirs du citoyen. On vous demandera pourquoi vous souhaitez devenir français et comment vous concevez les valeurs de la République (liberté, égalité, fraternité, laïcité)." },
+                { question: 'Que faire en cas de refus ou d\'ajournement ?', answer: "En cas de décision défavorable, vous pouvez exercer un recours gracieux auprès du ministre de l'Intérieur dans les 2 mois suivant la notification, puis un recours contentieux devant le tribunal administratif de Nantes (seul compétent) dans les 2 mois suivant le rejet du recours gracieux. L'ajournement fixe un délai après lequel vous pouvez déposer une nouvelle demande." },
+                { question: 'Quelle est la durée de la procédure ?', answer: "La procédure complète dure en moyenne 12 à 18 mois : réception du dossier complet par la préfecture, enquête de moralité, entretien d'assimilation, transmission au ministère de l'Intérieur, décision. Le délai maximum légal est de 18 mois à compter de la remise du dossier complet (article 21-25-1 du Code civil). En pratique, les délais varient selon les préfectures." },
+                { question: 'La naturalisation peut-elle être retirée ?', answer: "Oui, dans un délai de 2 ans suivant le décret de naturalisation, celui-ci peut être retiré si le bénéficiaire ne remplissait pas les conditions requises ou s'il a menti dans son dossier (article 27-2 du Code civil). La déchéance de nationalité est possible dans les 10 ans pour des faits particulièrement graves (terrorisme, espionnage) si la personne possède une autre nationalité." }
+            ]
+        }
+    };
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+    function getQueryParam(name) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+    }
 
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+    function renderPage() {
+        const type = getQueryParam('type') || 'licenciement-abusif';
+        const data = LITIGES_DATA[type];
 
-        document.querySelectorAll('.card-hover').forEach(el => {
+        if (!data) {
+            document.getElementById('hero-title').innerHTML = 'Litige non trouvé';
+            document.getElementById('hero-description').textContent = 'Le type de litige demandé n\'existe pas. Veuillez consulter notre catalogue de litiges.';
+            return;
+        }
+
+        document.title = data.title + ' | ' + data.category + ' | LDJ - La Défense Juridique';
+
+        document.getElementById('breadcrumb').innerHTML =
+            '<a href="index.html" class="hover:text-primary-600 transition-colors">Accueil</a>' +
+            '<span>/</span>' +
+            '<a href="litiges.html" class="hover:text-primary-600 transition-colors">Litiges</a>' +
+            '<span>/</span>' +
+            '<a href="litiges.html" class="hover:text-primary-600 transition-colors">' + data.category + '</a>' +
+            '<span>/</span>' +
+            '<span class="text-gray-900 font-medium">' + data.title + '</span>';
+
+        document.getElementById('hero-title').innerHTML = data.heroTitle;
+        document.getElementById('hero-description').textContent = data.description;
+
+        const sansLdjList = document.getElementById('sans-ldj-list');
+        sansLdjList.innerHTML = data.sansLDJ.map(function(item) {
+            return '<li class="flex items-start gap-3 text-gray-600">' +
+                '<svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>' +
+                '<span>' + item + '</span></li>';
+        }).join('');
+
+        const avecLdjList = document.getElementById('avec-ldj-list');
+        avecLdjList.innerHTML = data.avecLDJ.map(function(item) {
+            return '<li class="flex items-start gap-3 text-gray-700">' +
+                '<svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>' +
+                '<span>' + item + '</span></li>';
+        }).join('');
+
+        const casesGrid = document.getElementById('cases-grid');
+        casesGrid.innerHTML = data.cases.map(function(c) {
+            return '<div class="card-hover bg-white rounded-2xl p-6 shadow-sm border border-gray-100">' +
+                '<div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-xl flex items-center justify-center mb-4">' +
+                '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>' +
+                '</div>' +
+                '<h3 class="font-bold text-gray-900 mb-2">' + c.title + '</h3>' +
+                '<p class="text-gray-600 text-sm mb-4">' + c.description + '</p>' +
+                '<p class="text-primary-600 font-semibold text-sm">&rarr; ' + c.result + '</p>' +
+                '</div>';
+        }).join('');
+
+        const faqContainer = document.getElementById('faq-container');
+        faqContainer.innerHTML = data.faq.map(function(f) {
+            return '<details class="faq-accordion bg-gray-50 rounded-2xl border border-gray-100 group">' +
+                '<summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:text-primary-600 transition-colors list-none">' +
+                '<span>' + f.question + '</span>' +
+                '<svg class="faq-chevron w-5 h-5 text-gray-400 transition-transform flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>' +
+                '</summary>' +
+                '<div class="px-6 pb-6 text-gray-600 leading-relaxed">' + f.answer + '</div>' +
+                '</details>';
+        }).join('');
+
+        document.getElementById('cta-description').textContent =
+            'Obtenez votre diagnostic juridique gratuit en quelques minutes. Découvrez vos options pour votre dossier de ' + data.title.toLowerCase() + ' et bénéficiez d\'un accompagnement personnalisé.';
+
+        initAnimations();
+    }
+
+    function initAnimations() {
+        document.querySelectorAll('.card-hover').forEach(function(el) {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
 
-            const obs = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
-                        setTimeout(() => {
+                        setTimeout(function() {
                             entry.target.style.opacity = '1';
                             entry.target.style.transform = 'translateY(0)';
                         }, Math.random() * 200);
@@ -537,6 +1117,24 @@
             }, { threshold: 0.1 });
             obs.observe(el);
         });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        var mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        renderPage();
+    });
     </script>
 </body>
 </html>
